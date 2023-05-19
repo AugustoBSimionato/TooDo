@@ -8,8 +8,42 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State var email = ""
+    @State var password = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+    //            MARK: Header
+                HeaderView()
+                
+    //            MARK: Login Form
+                Form {
+                    TextField("Email Address", text: $email)
+                    SecureField("Password", text: $password)
+                    
+                    Button {
+                        
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                            Text("Log in")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                    }
+                }
+                .scrollDisabled(true)
+    //            MARK: Create account
+                VStack {
+                    Text("New here?")
+                    NavigationLink("Create Account", destination: RegisterView())
+                        .foregroundColor(.pink)
+                }
+                
+                Spacer()
+            }
+        }
     }
 }
 
