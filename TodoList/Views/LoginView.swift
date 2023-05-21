@@ -8,40 +8,39 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email = ""
-    @State var password = ""
+    @StateObject var viewModel = LoginViewViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
-    //            MARK: Header
-                HeaderView()
+    //          MARK: Header
+                HeaderView(title: "TooDo List", subtitle: "Get things done", angle: 0, background: .pink)
                 
-    //            MARK: Login Form
+    //          MARK: Login Form
+                
                 Form {
-                    TextField("Email Address", text: $email)
-                    SecureField("Password", text: $password)
+                    if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage)
+                            .foregroundColor(.red)
+                    }
                     
-                    Button {
-                        
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                            Text("Log in")
-                                .foregroundColor(.white)
-                                .bold()
-                        }
+                    TextField("Email Address", text: $viewModel.email)
+                        .autocapitalization(.none)
+                    SecureField("Password", text: $viewModel.password)
+                    
+                    TLButton(title: "Log In", background: .blue) {
+                        viewModel.login()
                     }
                 }
+                .offset(y: -100)
                 .scrollDisabled(true)
-    //            MARK: Create account
+                
+    //          MARK: Create account
                 VStack {
                     Text("New here?")
                     NavigationLink("Create Account", destination: RegisterView())
                         .foregroundColor(.pink)
                 }
-                
-                Spacer()
             }
         }
     }
