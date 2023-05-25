@@ -25,6 +25,7 @@ struct NewItemView: View {
 //              Due Date
                 DatePicker("Due Date", selection: $viewModel.dueDate)
                     .datePickerStyle(.graphical)
+                
 //              Button
                 TLButton(title: "Save", background: .pink) {
                     if viewModel.canSave {

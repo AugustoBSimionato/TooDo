@@ -34,5 +34,9 @@ struct TLButton_Previews: PreviewProvider {
         TLButton(title: "Value", background: .pink) {
             
         }
+        .onTapGesture {
+            let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                impactMed.impactOccurred()
+        }
     }
 }

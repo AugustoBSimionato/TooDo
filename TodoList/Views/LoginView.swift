@@ -14,10 +14,9 @@ struct LoginView: View {
         NavigationView {
             VStack {
     //          MARK: Header
-                HeaderView(title: "TooDo List", subtitle: "Get things done", angle: 0, background: .pink)
+                HeaderView(title: "TooDo", subtitle: "Get things done", angle: 0, background: .pink)
                 
     //          MARK: Login Form
-                
                 Form {
                     if !viewModel.errorMessage.isEmpty {
                         Text(viewModel.errorMessage)
