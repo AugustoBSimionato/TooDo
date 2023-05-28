@@ -69,6 +69,8 @@ struct AppAccessWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             AppAccessWidgetEntryView(entry: entry)
         }
+        .configurationDisplayName("TooDo")
+        .description("Access your todo list with one tap!")
         .supportedFamilies([.accessoryCircular, .systemSmall])
     }
 }

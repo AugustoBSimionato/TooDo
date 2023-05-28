@@ -32,7 +32,6 @@ struct ToDoListItemView: View {
                 Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
                     .foregroundColor(.accentColor)
             }
-
         }
     }
 }
