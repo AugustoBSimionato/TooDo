@@ -13,25 +13,43 @@ struct RegisterView: View {
     var body: some View {
         VStack {
 //          MARK: Header
-            HeaderView(title: "Register", subtitle: "Start organizing todo's", angle: 0, background: .orange)
-            
-            Form {
-                TextField("Full Name", text: $viewModel.name)
-                    .autocorrectionDisabled()
+            VStack {
+                VStack {
+                    Image("criando-conta")
+                        .padding(.top)
+                        .padding(.bottom, 15)
+                    Text("Vamos começar?")
+                        .font(.title)
+                        .padding(.bottom, 3)
+                    Text("Coloque suas informações abaixo👇")
+                        .padding(.bottom)
+                }
                 
-                TextField("Email Adress", text: $viewModel.email)
-                    .autocapitalization(.none)
-                    .autocorrectionDisabled()
+                if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
+                        .foregroundColor(.purple)
+                }
+                Form {
+                    TextField("Nome completo", text: $viewModel.name)
+                        .autocorrectionDisabled()
+                    
+                    TextField("Email", text: $viewModel.email)
+                        .autocapitalization(.none)
+                        .autocorrectionDisabled()
+                    SecureField("Senha", text: $viewModel.password)
+                }
+                .frame(width: 390, height: 203)
+                .scrollDisabled(true)
+                .scrollContentBackground(.hidden)
+                .shadow(radius: 5)
                 
-                SecureField("Password", text: $viewModel.password)
-                
-                TLButton(title: "Create Account", background: .green) {
+                TLButton(title: "Criar conta") {
                     viewModel.register()
                 }
+                .frame(width: 180, height: 80)
+                
+                Spacer()
             }
-            .offset(y: -110)
-            
-            Spacer()
         }
     }
 }

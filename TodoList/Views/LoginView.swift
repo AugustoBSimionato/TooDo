@@ -6,39 +6,62 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewViewModel()
+    @State private var unlocked = false
     
     var body: some View {
         NavigationView {
-            VStack {
-    //          MARK: Header
-                HeaderView(title: "TooDo", subtitle: "Get things done", angle: 0, background: .pink)
-                
-    //          MARK: Login Form
-                Form {
+            ZStack {
+                //          MARK: Login Form
+                VStack {
+                    Image("TooDo")
+                        .padding(.top, 90)
+                    
+                    Spacer()
+                    
                     if !viewModel.errorMessage.isEmpty {
                         Text(viewModel.errorMessage)
-                            .foregroundColor(.red)
+                            .foregroundColor(.purple)
                     }
-                    
-                    TextField("Email Address", text: $viewModel.email)
-                        .autocapitalization(.none)
-                    SecureField("Password", text: $viewModel.password)
-                    
-                    TLButton(title: "Log In", background: .blue) {
-                        viewModel.login()
+                    Form {
+                        TextField("Email", text: $viewModel.email)
+                            .autocapitalization(.none)
+                        SecureField("Senha", text: $viewModel.password)
                     }
-                }
-                .offset(y: -100)
-                .scrollDisabled(true)
-                
-    //          MARK: Create account
-                VStack {
-                    Text("New here?")
-                    NavigationLink("Create Account", destination: RegisterView())
-                        .foregroundColor(.pink)
+                    .frame(width: 390, height: 155)
+                    .scrollDisabled(true)
+                    .scrollContentBackground(.hidden)
+                    .shadow(radius: 5)
+                    
+                    TLButton(title: "Entrar") {
+                        let context = LAContext()
+                        var error: NSError?
+                        
+                        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Para sua segurança") { success, authenticationError in
+                                
+                                if success {
+                                    viewModel.login()
+                                }
+                            }
+                        }
+                    }
+                    .frame(width: 150, height: 80)
+                    .padding(.top)
+                    
+                    Spacer()
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(.purple)
+                            .frame(width: 170, height: 45)
+                        
+                        NavigationLink("Criar conta", destination: RegisterView())
+                            .foregroundColor(.white)
+                    }
                 }
             }
         }

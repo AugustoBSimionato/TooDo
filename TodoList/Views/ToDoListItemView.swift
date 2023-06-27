@@ -19,7 +19,7 @@ struct ToDoListItemView: View {
                     .font(.body)
                     .bold()
                 
-                Text("\(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .standard))")
+                Text("Concluir até: \(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .standard))")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }

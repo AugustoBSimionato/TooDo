@@ -12,22 +12,24 @@ struct NewItemView: View {
     @Binding var newItemPresented: Bool
     
     var body: some View {
-        VStack {
-            Text("New Item")
-                .padding()
-                .font(.system(size: 32))
-                .bold()
-            
-            Form {
-//              Title
-                TextField("Title", text: $viewModel.title)
+        ZStack {
+            VStack {
+                Text("Nova tarefa")
+                    .padding(.top, 30)
+                    .font(.system(size: 25))
+                    .bold()
                 
-//              Due Date
-                DatePicker("Due Date", selection: $viewModel.dueDate)
-                    .datePickerStyle(.graphical)
+                Form {
+                    TextField("Descreva a tarefa...", text: $viewModel.title)
+                    DatePicker("", selection: $viewModel.dueDate)
+                        .datePickerStyle(.graphical)
+                        .font(.system(size: 15))
+                }
+                .scrollDisabled(true)
+                .scrollContentBackground(.hidden)
+                .shadow(radius: 5)
                 
-//              Button
-                TLButton(title: "Save", background: .pink) {
+                TLButton(title: "Adicionar") {
                     if viewModel.canSave {
                         viewModel.save()
                         newItemPresented = false
@@ -35,10 +37,10 @@ struct NewItemView: View {
                         viewModel.showAlert = true
                     }
                 }
-                .padding()
-            }
-            .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text("Error"), message: Text("Please fill all fields ans select a due date that is today or newer"))
+                .frame(width: 200, height: 80)
+                .alert(isPresented: $viewModel.showAlert) {
+                    Alert(title: Text("Estranho...🤨"), message: Text("Alguma coisa está faltando, dê uma olhada"))
+                }
             }
         }
     }

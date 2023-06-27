@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TLButton: View {
     let title: String
-    let background: Color
     let action: () -> Void
     
     var body: some View {
@@ -18,7 +17,7 @@ struct TLButton: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(background)
+                    .foregroundColor(Color("ButtonColor"))
                 
                 Text(title)
                     .foregroundColor(.white)
@@ -31,7 +30,7 @@ struct TLButton: View {
 
 struct TLButton_Previews: PreviewProvider {
     static var previews: some View {
-        TLButton(title: "Value", background: .pink) {
+        TLButton(title: "Value") {
             
         }
         .onTapGesture {

@@ -36,8 +36,9 @@
 		4E2548BE2A17BADC008F7E9B /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2548BD2A17BADC008F7E9B /* LoginViewViewModel.swift */; };
 		4E2548C02A17BAEA008F7E9B /* RegisterViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2548BF2A17BAEA008F7E9B /* RegisterViewViewModel.swift */; };
 		4E2548C22A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2548C12A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift */; };
-		4E2548C42A17C252008F7E9B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2548C32A17C252008F7E9B /* HeaderView.swift */; };
 		4E362E412A182E320018FEE2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E362E402A182E320018FEE2 /* Extensions.swift */; };
+		4E3FA4232A452B7000FC051E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3FA4222A452B7000FC051E /* SettingsView.swift */; };
+		4E3FA4252A452C0800FC051E /* SettingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3FA4242A452C0800FC051E /* SettingsViewViewModel.swift */; };
 		4E681CC52A180A7100668BA6 /* TLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E681CC42A180A7100668BA6 /* TLButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,9 +95,11 @@
 		4E2548BD2A17BADC008F7E9B /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 		4E2548BF2A17BAEA008F7E9B /* RegisterViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewViewModel.swift; sourceTree = "<group>"; };
 		4E2548C12A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemViewViewModel.swift; sourceTree = "<group>"; };
-		4E2548C32A17C252008F7E9B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4E362E402A182E320018FEE2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4E3FA4222A452B7000FC051E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4E3FA4242A452C0800FC051E /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
 		4E681CC42A180A7100668BA6 /* TLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLButton.swift; sourceTree = "<group>"; };
+		4E8CF0422A44D6000007CE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,7 @@
 		4E2548892A17AEC3008F7E9B /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				4E8CF0422A44D6000007CE58 /* Info.plist */,
 				4E2548A42A17B670008F7E9B /* Other */,
 				4E2548A32A17B65A008F7E9B /* Models */,
 				4E2548A22A17B640008F7E9B /* ViewModels */,
@@ -191,8 +195,8 @@
 				4E2548AB2A17B8B6008F7E9B /* LoginView.swift */,
 				4E2548AD2A17B8CC008F7E9B /* RegisterView.swift */,
 				4E2548AF2A17B909008F7E9B /* ToDoListItemView.swift */,
-				4E2548C32A17C252008F7E9B /* HeaderView.swift */,
 				4E681CC42A180A7100668BA6 /* TLButton.swift */,
+				4E3FA4222A452B7000FC051E /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +211,7 @@
 				4E2548BB2A17BACA008F7E9B /* NewItemViewViewModel.swift */,
 				4E2548BD2A17BADC008F7E9B /* LoginViewViewModel.swift */,
 				4E2548BF2A17BAEA008F7E9B /* RegisterViewViewModel.swift */,
+				4E3FA4242A452C0800FC051E /* SettingsViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -351,11 +356,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E2548AC2A17B8B6008F7E9B /* LoginView.swift in Sources */,
-				4E2548C42A17C252008F7E9B /* HeaderView.swift in Sources */,
 				4E25488D2A17AEC3008F7E9B /* MainView.swift in Sources */,
 				4E2548C02A17BAEA008F7E9B /* RegisterViewViewModel.swift in Sources */,
 				4E2548B62A17BA74008F7E9B /* MainViewViewModel.swift in Sources */,
 				4E2548A82A17B764008F7E9B /* ToDoListView.swift in Sources */,
+				4E3FA4252A452C0800FC051E /* SettingsViewViewModel.swift in Sources */,
+				4E3FA4232A452B7000FC051E /* SettingsView.swift in Sources */,
 				4E2548AE2A17B8CC008F7E9B /* RegisterView.swift in Sources */,
 				4E681CC52A180A7100668BA6 /* TLButton.swift in Sources */,
 				4E2548B82A17BA8E008F7E9B /* ProfileViewViewModel.swift in Sources */,
@@ -564,8 +570,10 @@
 				DEVELOPMENT_TEAM = HXDK8H2H24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodoList/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TooDo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Usamos seu rosto para bloquear o app toda vez que sair dele";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -597,8 +605,10 @@
 				DEVELOPMENT_TEAM = HXDK8H2H24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodoList/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TooDo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Usamos seu rosto para bloquear o app toda vez que sair dele";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -23,13 +23,17 @@ struct MainView: View {
         TabView {
             ToDoListView(userId: viewModel.currentUserId)
                 .tabItem {
-                    Label("Tasks", systemImage: "list.bullet.rectangle.portrait.fill")
+                    Label("Tarefas", systemImage: "list.bullet.rectangle.portrait.fill")
                 }
             ProfileView()
                 .tabItem {
-                    Label("Profile", systemImage: "person.circle")
+                    Label("Perfil", systemImage: "person.circle")
                 }
         }
+    }
+    
+    func authenticate() {
+        
     }
 }
 

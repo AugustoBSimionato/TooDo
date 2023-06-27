@@ -17,18 +17,19 @@ struct ProfileView: View {
                     profile(user: user)
                     
                     //              Sign out
-                    TLButton(title: "Sign out", background: .red) {
+                    TLButton(title: "Sair") {
                         viewModel.logout()
                     }
-                    .frame(width: 150, height: 80)
+                    .frame(width: 140, height: 75)
                     .padding()
                 } else {
                     ProgressView()
-                    Text("Loading Profile...")
+                    Text("Carregando perfil...")
                         .padding()
                 }
             }
-            .navigationTitle("Profile")
+            .navigationTitle("Perfil")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
             viewModel.fetchUser()
@@ -39,35 +40,37 @@ struct ProfileView: View {
 @ViewBuilder
 func profile(user: User) -> some View {
     //              Avatar
-    Image(systemName: "person.circle")
+    Spacer()
+    
+    Image(systemName: "person.crop.circle")
         .resizable()
         .aspectRatio(contentMode: .fit)
-        .foregroundColor(.accentColor)
+        .foregroundColor(Color.accentColor)
         .frame(width: 125, height: 125)
-        .padding()
     
     //              Info:
     VStack(alignment: .leading) {
         HStack {
-            Image(systemName: "person")
+            Image(systemName: "person.fill")
                 .resizable()
                 .frame(width: 20, height: 20)
+                .foregroundColor(Color.accentColor)
             Text(user.name)
-                .bold()
         }
         .padding()
         HStack {
-            Image(systemName: "envelope")
+            Image(systemName: "envelope.fill")
                 .resizable()
                 .frame(width: 25, height: 20)
+                .foregroundColor(Color.accentColor)
             Text(user.email)
-                .bold()
         }
         .padding()
         HStack {
-            Image(systemName: "person.badge.clock")
+            Image(systemName: "person.badge.clock.fill")
                 .resizable()
                 .frame(width: 25, height: 25)
+                .foregroundColor(Color.accentColor)
             Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
         }
         .padding()

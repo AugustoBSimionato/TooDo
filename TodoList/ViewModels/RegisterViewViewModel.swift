@@ -13,6 +13,7 @@ class RegisterViewViewModel: ObservableObject {
     @Published var name = ""
     @Published var email = ""
     @Published var password = ""
+    @Published var errorMessage = ""
     
     init() {}
     
@@ -45,10 +46,14 @@ class RegisterViewViewModel: ObservableObject {
               !email.trimmingCharacters(in: .whitespaces).isEmpty,
               !password.trimmingCharacters(in: .whitespaces).isEmpty else {
             
+            errorMessage = "Campos estão vazios"
+            
             return false
         }
         
         guard email.contains("@") && email.contains(".") else {
+            errorMessage = "Acho que faltou um @ ou um . no email"
+            
             return false
         }
         
