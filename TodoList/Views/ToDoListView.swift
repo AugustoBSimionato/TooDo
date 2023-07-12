@@ -10,79 +10,108 @@ import FirebaseFirestoreSwift
 
 struct ToDoListView: View {
     @StateObject var viewModel: ToDoListViewViewModel
-    @StateObject var viewModelSettings: SettingsViewViewModel
+    @StateObject var viewModelProfile = ProfileViewViewModel()
     @FirestoreQuery var items: [ToDoListItem]
     
+    @State private var searchTask = ""
+    
     private let userId: String
+    
+    var filteredTasks: [ToDoListItem] {
+        guard !searchTask.isEmpty else { return items }
+        return items.filter { $0.title.localizedCaseInsensitiveContains(searchTask) }
+    }
     
     init(userId: String) {
         self.userId = userId
 //      users/<id>/todos/<entries>
         self._items = FirestoreQuery(collectionPath: "users/\(userId)/todos")
         self._viewModel = StateObject(wrappedValue: ToDoListViewViewModel(userId: userId))
-        self._viewModelSettings = StateObject(wrappedValue: SettingsViewViewModel(userId: userId))
+        self._viewModelProfile = StateObject(wrappedValue: ProfileViewViewModel())
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {            
             VStack {
-                List(items) { item in
+                List(filteredTasks) { item in
                     ToDoListItemView(item: item)
                         .swipeActions {
                             Button {
-//                              Delete
                                 viewModel.delete(id: item.id)
                             } label: {
-                                HStack {
-                                    Image(systemName: "trash.fill")
-                                    Text("Apagar")
-                                }
+                                Image(systemName: "trash.fill")
                             }
                             .tint(.red)
                             .onTapGesture {
-                                let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                                    impactMed.impactOccurred()
+                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                impactMed.impactOccurred()
                             }
-
                         }
                 }
                 .listStyle(.sidebar)
+                .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Buscar tarefa")
                 .overlay(alignment: .bottomTrailing) {
                     Button {
                         viewModel.showingNewItemView = true
                     } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 25, weight: .medium))
+                        Image(systemName: "square.and.pencil")
+                            .font(.system(size: 28, weight: .medium))
                             .bold()
-                            .foregroundColor(.white)
-                            .frame(width: 55, height: 55)
+                            .foregroundColor(Color("ButtonColor"))
+                            .frame(width: 60, height: 60)
                             .background {
-                                RoundedRectangle(cornerRadius: 30)
-                                    .fill(Color("ButtonColor"))
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color("ButtonColor")).opacity(0.4)
                             }
-                            .shadow(radius: 10)
+                            .shadow(radius: 15)
                     }
                     .padding(.trailing, 45)
                     .padding(.bottom, 40)
                 }
             }
             .navigationTitle("Tarefas")
-//            .toolbar {
-//                Button {
-//                    viewModelSettings.showingSettingsView = true
-//                } label: {
-//                    Image(systemName: "sidebar.right")
-//                        .font(.system(size: 18))
-//                        .bold()
-//                        .foregroundColor(Color("ButtonColor"))
-//                }
-//            }
-            .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $viewModel.showingNewItemView) { 
-                NewItemView(newItemPresented: $viewModel.showingNewItemView)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Menu {
+                        NavigationLink(destination: ProfileView()) {
+                            HStack {
+                                Text("Perfil")
+                                Image(systemName: "person.crop.circle")
+                            }
+                        }
+                        
+                        NavigationLink(destination: TermsView()) {
+                            HStack {
+                                Text("Termos e Condições de Uso")
+                                Image(systemName: "person.badge.shield.checkmark.fill")
+                            }
+                        }
+                        
+                        Button(role: .destructive) {
+                            viewModelProfile.logout()
+                        } label: {
+                            HStack {
+                                Text("Sair")
+                                    .font(.headline)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color("ButtonColor"))
+                                    .cornerRadius(10)
+                                Image(systemName: "rectangle.portrait.and.arrow.forward.fill")
+                            }
+                            
+                        }
+                        .padding(.horizontal, 80)
+                    } label: {
+                        Image(systemName: "ellipsis.circle.fill")
+                            .foregroundColor(Color("ButtonColor"))
+                            .padding(.leading, 5)
+                    }
+                }
             }
-            .sheet(isPresented: $viewModelSettings.showingSettingsView) {
-                SettingsView(settingsPresented: $viewModelSettings.showingSettingsView)
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $viewModel.showingNewItemView) {
+                NewItemView(newItemPresented: $viewModel.showingNewItemView)
             }
         }
     }

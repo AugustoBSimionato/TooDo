@@ -46,6 +46,22 @@ class NewItemViewViewModel: ObservableObject {
         
     }
     
+    func sendScheduleNotification(date: Date, title: String, body: String) {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = UNNotificationSound.default
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request)
+    }
+    
     var canSave: Bool {
         guard !title.trimmingCharacters(in: .whitespaces).isEmpty else {
             return false

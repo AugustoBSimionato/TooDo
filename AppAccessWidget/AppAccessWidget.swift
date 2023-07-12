@@ -46,15 +46,21 @@ struct AppAccessWidgetEntryView : View {
         switch widgetFamily {
         case .accessoryCircular:
             VStack {
-                Image(systemName: "list.bullet.rectangle.fill")
-                    .font(.system(size: 43))
+                Image(systemName: "square.and.pencil.circle.fill")
+                    .font(.system(size: 50))
             }
         case .systemSmall:
-            VStack(spacing: 15) {
-                Image(systemName: "checklist.checked")
-                    .font(.system(size: 45))
-                    .foregroundColor(.red)
-                Text("Well done 👏🏻")
+            ZStack {
+                Color("backgroundColor")
+                
+                VStack {
+                    Image(systemName: "square.and.pencil.circle.fill")
+                        .font(.system(size: 70))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 2)
+                    Text("Adicionar tarefa")
+                        .foregroundColor(.white)
+                }
             }
         default:
             Text("Not implemented")
@@ -70,7 +76,7 @@ struct AppAccessWidget: Widget {
             AppAccessWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("TooDo")
-        .description("Access your todo list with one tap!")
+        .description("Acesse sua lista de tarefas em um clique!")
         .supportedFamilies([.accessoryCircular, .systemSmall])
     }
 }
@@ -78,10 +84,10 @@ struct AppAccessWidget: Widget {
 struct AppAccessWidget_Previews: PreviewProvider {
     static var previews: some View {
         AppAccessWidgetEntryView(entry: SimpleEntry(date: Date()))
-            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-            .previewDisplayName("circular")
-        AppAccessWidgetEntryView(entry: SimpleEntry(date: Date()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
             .previewDisplayName("small")
+        AppAccessWidgetEntryView(entry: SimpleEntry(date: Date()))
+            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            .previewDisplayName("circular")
     }
 }

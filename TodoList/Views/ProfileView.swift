@@ -9,75 +9,87 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewViewModel()
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {
             VStack {
                 if let user = viewModel.user {
-                    profile(user: user)
-                    
-                    //              Sign out
-                    TLButton(title: "Sair") {
-                        viewModel.logout()
-                    }
-                    .frame(width: 140, height: 75)
-                    .padding()
+                    profileView(user: user)
                 } else {
                     ProgressView()
                     Text("Carregando perfil...")
                         .padding()
                 }
             }
-            .navigationTitle("Perfil")
-            .navigationBarTitleDisplayMode(.inline)
+            .padding()
         }
         .onAppear {
             viewModel.fetchUser()
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.backward.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(Color("ButtonColor"))
+                            .bold()
+                    }
+                }
+                
+            }
         }
     }
 }
 
 @ViewBuilder
-func profile(user: User) -> some View {
-    //              Avatar
-    Spacer()
-    
-    Image(systemName: "person.crop.circle")
-        .resizable()
-        .aspectRatio(contentMode: .fit)
-        .foregroundColor(Color.accentColor)
-        .frame(width: 125, height: 125)
-    
-    //              Info:
-    VStack(alignment: .leading) {
-        HStack {
-            Image(systemName: "person.fill")
-                .resizable()
-                .frame(width: 20, height: 20)
-                .foregroundColor(Color.accentColor)
-            Text(user.name)
+func profileView(user: User) -> some View {
+    VStack {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .fill(Color("BackgroundProfileColor"))
+                .frame(height: 350)
+                .shadow(radius: 10)
+            
+            VStack {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                
+                Text(user.name)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 20)
+                    .padding(.bottom, 30)
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                            .font(.system(size: 25))
+                        Text("E-mail: ")
+                            .bold()
+                        Text("\(user.email)")
+                    }
+                    .padding(.bottom, 5)
+                    
+                    HStack {
+                        Image(systemName: "person.badge.clock.fill")
+                            .font(.system(size: 25))
+                        Text("Desde: ")
+                            .bold()
+                        Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
+                    }
+                    .padding(.bottom, 5)
+                }
+                .padding(.horizontal, 30)
+            }
         }
-        .padding()
-        HStack {
-            Image(systemName: "envelope.fill")
-                .resizable()
-                .frame(width: 25, height: 20)
-                .foregroundColor(Color.accentColor)
-            Text(user.email)
-        }
-        .padding()
-        HStack {
-            Image(systemName: "person.badge.clock.fill")
-                .resizable()
-                .frame(width: 25, height: 25)
-                .foregroundColor(Color.accentColor)
-            Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
-        }
-        .padding()
     }
-    .padding()
-    
-    Spacer()
 }
 
 struct ProfileView_Previews: PreviewProvider {

@@ -7,36 +7,61 @@
 
 import SwiftUI
 import LocalAuthentication
+import UserNotifications
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewViewModel()
     @State private var unlocked = false
+    @State private var isAnimating = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                //          MARK: Login Form
                 VStack {
-                    Image("TooDo")
-                        .padding(.top, 90)
-                    
                     Spacer()
+                    Text("Bem-vindo!")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("ButtonColor"))
+                        .padding(.bottom, 30)
+                    
+                    
+                    VStack(spacing: 20) {
+                        ZStack(alignment: .leading) {
+                            if viewModel.email.isEmpty {
+                                Text("Email")
+                                    .foregroundColor(Color("PlaceholderColor").opacity(0.8))
+                            }
+                            TextField("", text: $viewModel.email)
+                                
+                        }
+                        .foregroundColor(Color("ForegroundFieldColor"))
+                        .autocapitalization(.none)
+                        .padding()
+                        .background(Color("BackgroundFieldColor"))
+                        .cornerRadius(10)
+                        
+                        ZStack(alignment: .leading) {
+                            if viewModel.password.isEmpty {
+                                Text("Senha")
+                                    .foregroundColor(Color("PlaceholderColor").opacity(0.8))
+                            }
+                            SecureField("", text: $viewModel.password)
+                        }
+                        .foregroundColor(Color("ForegroundFieldColor"))
+                        .padding()
+                        .background(Color("BackgroundFieldColor"))
+                        .cornerRadius(10)
+                    }
+                    .padding(.horizontal, 30)
                     
                     if !viewModel.errorMessage.isEmpty {
                         Text(viewModel.errorMessage)
-                            .foregroundColor(.purple)
+                            .foregroundColor(Color("WarnColor"))
+                            .bold()
                     }
-                    Form {
-                        TextField("Email", text: $viewModel.email)
-                            .autocapitalization(.none)
-                        SecureField("Senha", text: $viewModel.password)
-                    }
-                    .frame(width: 390, height: 155)
-                    .scrollDisabled(true)
-                    .scrollContentBackground(.hidden)
-                    .shadow(radius: 5)
                     
-                    TLButton(title: "Entrar") {
+                    Button {
                         let context = LAContext()
                         var error: NSError?
                         
@@ -48,22 +73,47 @@ struct LoginView: View {
                                 }
                             }
                         }
+                    } label: {
+                        Text("Entrar")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color("ButtonColor"))
+                            .cornerRadius(30)
                     }
-                    .frame(width: 150, height: 80)
-                    .padding(.top)
+                    .padding(.horizontal, 70)
+                    .padding(.top, 30)
                     
+                    Text("Novo por aqui?")
+                        .padding(.top)
+                        .foregroundColor(.gray)
+                    
+                    NavigationLink("Criar conta", destination: RegisterView())
+                        .bold()
+
                     Spacer()
                     
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.purple)
-                            .frame(width: 170, height: 45)
-                        
-                        NavigationLink("Criar conta", destination: RegisterView())
-                            .foregroundColor(.white)
+                    NavigationLink {
+                        TermsView()
+                    } label: {
+                        Text("Termos e condições de Uso")
+                            .padding()
+                    }
+
+                }
+                .padding()
+            }
+            .onAppear(perform: {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        print("All set!")
+                    } else if let error = error {
+                        print(error.localizedDescription)
                     }
                 }
-            }
+            })
+            .edgesIgnoringSafeArea(.all)
         }
     }
 }

@@ -6,8 +6,8 @@
         "components" : {
           "alpha" : "1.000",
           "blue" : "0xFF",
-          "green" : "0xDF",
-          "red" : "0xDE"
+          "green" : "0xFF",
+          "red" : "0xFF"
         }
       },
       "idiom" : "universal"
@@ -20,13 +20,8 @@
         }
       ],
       "color" : {
-        "color-space" : "srgb",
-        "components" : {
-          "alpha" : "1.000",
-          "blue" : "255",
-          "green" : "178",
-          "red" : "222"
-        }
+        "platform" : "universal",
+        "reference" : "quaternaryLabelColor"
       },
       "idiom" : "universal"
     }

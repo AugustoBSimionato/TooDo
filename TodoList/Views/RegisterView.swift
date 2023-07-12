@@ -8,47 +8,103 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @State private var isAnimating = false
     @StateObject var viewModel = RegisterViewViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
-//          MARK: Header
+        ZStack {
             VStack {
                 VStack {
-                    Image("criando-conta")
-                        .padding(.top)
-                        .padding(.bottom, 15)
                     Text("Vamos começar?")
                         .font(.title)
-                        .padding(.bottom, 3)
+                        .bold()
                     Text("Coloque suas informações abaixo👇")
-                        .padding(.bottom)
+                        .bold()
                 }
+                .foregroundColor(Color("ButtonColor"))
+                .padding(.top, 40)
+                
+                Spacer()
+                
+                VStack(spacing: 20) {
+                    ZStack(alignment: .leading) {
+                        if viewModel.name.isEmpty {
+                            Text("Nome")
+                                .foregroundColor(Color("PlaceholderColor").opacity(0.8))
+                        }
+                        TextField("", text: $viewModel.name)
+                            
+                    }
+                    .foregroundColor(Color("ForegroundFieldColor"))
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(Color("BackgroundFieldColor"))
+                    .cornerRadius(10)
+                    
+                    ZStack(alignment: .leading) {
+                        if viewModel.email.isEmpty {
+                            Text("Email")
+                                .foregroundColor(Color("PlaceholderColor").opacity(0.8))
+                        }
+                        TextField("", text: $viewModel.email)
+                    }
+                    .foregroundColor(Color("ForegroundFieldColor"))
+                    .padding()
+                    .background(Color("BackgroundFieldColor"))
+                    .cornerRadius(10)
+                    
+                    ZStack(alignment: .leading) {
+                        if viewModel.password.isEmpty {
+                            Text("Senha")
+                                .foregroundColor(Color("PlaceholderColor").opacity(0.8))
+                        }
+                        SecureField("", text: $viewModel.password)
+                    }
+                    .foregroundColor(Color("ForegroundFieldColor"))
+                    .padding()
+                    .background(Color("BackgroundFieldColor"))
+                    .cornerRadius(10)
+                }
+                .padding(.horizontal, 30)
                 
                 if !viewModel.errorMessage.isEmpty {
                     Text(viewModel.errorMessage)
-                        .foregroundColor(.purple)
+                        .foregroundColor(Color("WarnColor"))
+                        .bold()
                 }
-                Form {
-                    TextField("Nome completo", text: $viewModel.name)
-                        .autocorrectionDisabled()
-                    
-                    TextField("Email", text: $viewModel.email)
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled()
-                    SecureField("Senha", text: $viewModel.password)
-                }
-                .frame(width: 390, height: 203)
-                .scrollDisabled(true)
-                .scrollContentBackground(.hidden)
-                .shadow(radius: 5)
-                
-                TLButton(title: "Criar conta") {
+                Button {
                     viewModel.register()
+                } label: {
+                    Text("Criar conta")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color("ButtonColor"))
+                        .cornerRadius(30)
                 }
-                .frame(width: 180, height: 80)
+                .padding(.horizontal, 50)
+                .padding(.top, 30)
                 
                 Spacer()
+            }
+            .padding()
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.backward.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(Color("ButtonColor"))
+                            .bold()
+                    }
+                }
+                
             }
         }
     }

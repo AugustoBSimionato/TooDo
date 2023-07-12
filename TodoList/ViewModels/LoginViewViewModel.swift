@@ -29,7 +29,7 @@ class LoginViewViewModel: ObservableObject {
     private func validate() -> Bool {
         errorMessage = ""
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty, !password.trimmingCharacters(in: .whitespaces).isEmpty else {
-            errorMessage = "Email e senha estão vazios"
+            errorMessage = "Um dos campos está vazio"
             
             return false
         }

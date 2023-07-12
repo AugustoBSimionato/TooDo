@@ -19,7 +19,7 @@ struct ToDoListItemView: View {
                     .font(.body)
                     .bold()
                 
-                Text("Concluir até: \(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .standard))")
+                Text("Terminar até \(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .shortened))")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
@@ -29,8 +29,10 @@ struct ToDoListItemView: View {
             Button {
                 viewModel.toggleIsDone(item: item)
             } label: {
-                Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(.accentColor)
+                withAnimation(.easeIn(duration: 2)) {
+                    Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
+                        .foregroundColor(.accentColor)
+                }
             }
         }
     }

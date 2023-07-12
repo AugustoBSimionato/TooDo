@@ -6,9 +6,22 @@
         "components" : {
           "alpha" : "1.000",
           "blue" : "0xFF",
-          "green" : "0x63",
+          "green" : "0x62",
           "red" : "0x6C"
         }
+      },
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "platform" : "universal",
+        "reference" : "quaternaryLabelColor"
       },
       "idiom" : "universal"
     }

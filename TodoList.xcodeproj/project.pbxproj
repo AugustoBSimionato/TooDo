@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0B841F2A55ED68000B8A06 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B841E2A55ED68000B8A06 /* NotificationHandler.swift */; };
 		4E2323B62A1EC02C009B1833 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2323B52A1EC02C009B1833 /* WidgetKit.framework */; };
 		4E2323B82A1EC02C009B1833 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2323B72A1EC02C009B1833 /* SwiftUI.framework */; };
 		4E2323BB2A1EC02C009B1833 /* AppAccessWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2323BA2A1EC02C009B1833 /* AppAccessWidgetBundle.swift */; };
@@ -36,10 +37,13 @@
 		4E2548BE2A17BADC008F7E9B /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2548BD2A17BADC008F7E9B /* LoginViewViewModel.swift */; };
 		4E2548C02A17BAEA008F7E9B /* RegisterViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2548BF2A17BAEA008F7E9B /* RegisterViewViewModel.swift */; };
 		4E2548C22A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2548C12A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift */; };
+		4E31CC252A5CA9A00071DB15 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31CC242A5CA9A00071DB15 /* TermsView.swift */; };
 		4E362E412A182E320018FEE2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E362E402A182E320018FEE2 /* Extensions.swift */; };
 		4E3FA4232A452B7000FC051E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3FA4222A452B7000FC051E /* SettingsView.swift */; };
 		4E3FA4252A452C0800FC051E /* SettingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3FA4242A452C0800FC051E /* SettingsViewViewModel.swift */; };
 		4E681CC52A180A7100668BA6 /* TLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E681CC42A180A7100668BA6 /* TLButton.swift */; };
+		4EA1EC822A53B26000AED9D9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA1EC812A53B26000AED9D9 /* TimerView.swift */; };
+		4EA642272A5775DA00431A01 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA642262A5775DA00431A01 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E0B841E2A55ED68000B8A06 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		4E2323B32A1EC02C009B1833 /* AppAccessWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AppAccessWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E2323B52A1EC02C009B1833 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4E2323B72A1EC02C009B1833 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -95,11 +100,14 @@
 		4E2548BD2A17BADC008F7E9B /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 		4E2548BF2A17BAEA008F7E9B /* RegisterViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewViewModel.swift; sourceTree = "<group>"; };
 		4E2548C12A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemViewViewModel.swift; sourceTree = "<group>"; };
+		4E31CC242A5CA9A00071DB15 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		4E362E402A182E320018FEE2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4E3FA4222A452B7000FC051E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4E3FA4242A452C0800FC051E /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
 		4E681CC42A180A7100668BA6 /* TLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLButton.swift; sourceTree = "<group>"; };
-		4E8CF0422A44D6000007CE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4E8CF0422A44D6000007CE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EA1EC812A53B26000AED9D9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		4EA642262A5775DA00431A01 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E0B841D2A55ED4D000B8A06 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				4E0B841E2A55ED68000B8A06 /* NotificationHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
 		4E2323B42A1EC02C009B1833 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,12 +183,13 @@
 		4E2548892A17AEC3008F7E9B /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				4E8CF0422A44D6000007CE58 /* Info.plist */,
 				4E2548A42A17B670008F7E9B /* Other */,
 				4E2548A32A17B65A008F7E9B /* Models */,
 				4E2548A22A17B640008F7E9B /* ViewModels */,
 				4E2548A12A17B632008F7E9B /* Views */,
+				4E0B841D2A55ED4D000B8A06 /* Handlers */,
 				4E2548902A17AEC4008F7E9B /* Preview Content */,
+				4E8CF0422A44D6000007CE58 /* Info.plist */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -197,6 +214,8 @@
 				4E2548AF2A17B909008F7E9B /* ToDoListItemView.swift */,
 				4E681CC42A180A7100668BA6 /* TLButton.swift */,
 				4E3FA4222A452B7000FC051E /* SettingsView.swift */,
+				4EA1EC812A53B26000AED9D9 /* TimerView.swift */,
+				4E31CC242A5CA9A00071DB15 /* TermsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,6 +251,7 @@
 				4E2548982A17B145008F7E9B /* GoogleService-Info.plist */,
 				4E25488A2A17AEC3008F7E9B /* TodoListApp.swift */,
 				4E362E402A182E320018FEE2 /* Extensions.swift */,
+				4EA642262A5775DA00431A01 /* Launch Screen.storyboard */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -300,11 +320,12 @@
 			};
 			buildConfigurationList = 4E2548822A17AEC3008F7E9B /* Build configuration list for PBXProject "TodoList" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 4E25487E2A17AEC3008F7E9B;
 			packageReferences = (
@@ -335,6 +356,7 @@
 			files = (
 				4E2548922A17AEC4008F7E9B /* Preview Assets.xcassets in Resources */,
 				4E25488F2A17AEC4008F7E9B /* Assets.xcassets in Resources */,
+				4EA642272A5775DA00431A01 /* Launch Screen.storyboard in Resources */,
 				4E2548992A17B145008F7E9B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,9 +380,11 @@
 				4E2548AC2A17B8B6008F7E9B /* LoginView.swift in Sources */,
 				4E25488D2A17AEC3008F7E9B /* MainView.swift in Sources */,
 				4E2548C02A17BAEA008F7E9B /* RegisterViewViewModel.swift in Sources */,
+				4E0B841F2A55ED68000B8A06 /* NotificationHandler.swift in Sources */,
 				4E2548B62A17BA74008F7E9B /* MainViewViewModel.swift in Sources */,
 				4E2548A82A17B764008F7E9B /* ToDoListView.swift in Sources */,
 				4E3FA4252A452C0800FC051E /* SettingsViewViewModel.swift in Sources */,
+				4EA1EC822A53B26000AED9D9 /* TimerView.swift in Sources */,
 				4E3FA4232A452B7000FC051E /* SettingsView.swift in Sources */,
 				4E2548AE2A17B8CC008F7E9B /* RegisterView.swift in Sources */,
 				4E681CC52A180A7100668BA6 /* TLButton.swift in Sources */,
@@ -369,6 +393,7 @@
 				4E2548B22A17B954008F7E9B /* User.swift in Sources */,
 				4E2548B02A17B909008F7E9B /* ToDoListItemView.swift in Sources */,
 				4E2548BA2A17BAB0008F7E9B /* ToDoListViewViewModel.swift in Sources */,
+				4E31CC252A5CA9A00071DB15 /* TermsView.swift in Sources */,
 				4E2548BE2A17BADC008F7E9B /* LoginViewViewModel.swift in Sources */,
 				4E25488B2A17AEC3008F7E9B /* TodoListApp.swift in Sources */,
 				4E362E412A182E320018FEE2 /* Extensions.swift in Sources */,
@@ -578,8 +603,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -587,9 +611,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.augusto.TodoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -613,8 +640,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -622,9 +648,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.augusto.TodoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
