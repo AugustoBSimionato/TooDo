@@ -49,45 +49,43 @@ struct ProfileView: View {
 @ViewBuilder
 func profileView(user: User) -> some View {
     VStack {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color("BackgroundProfileColor"))
-                .frame(height: 350)
-                .shadow(radius: 10)
-            
-            VStack {
-                Image(systemName: "person.fill")
+        VStack {
+            Button {
+                
+            } label: {
+                Image(systemName: "person.crop.circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
-                
-                Text(user.name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.top, 20)
-                    .padding(.bottom, 30)
-                
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "envelope.fill")
-                            .font(.system(size: 25))
-                        Text("E-mail: ")
-                            .bold()
-                        Text("\(user.email)")
-                    }
-                    .padding(.bottom, 5)
-                    
-                    HStack {
-                        Image(systemName: "person.badge.clock.fill")
-                            .font(.system(size: 25))
-                        Text("Desde: ")
-                            .bold()
-                        Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
-                    }
-                    .padding(.bottom, 5)
-                }
-                .padding(.horizontal, 30)
             }
+            .padding(.bottom, 20)
+            
+            Text(user.name)
+                .font(.title)
+                .fontWeight(.bold)
+                .padding(.top, 20)
+                .padding(.bottom, 30)
+            
+            VStack {
+                VStack {
+                    Image(systemName: "envelope.fill")
+                        .font(.system(size: 25))
+                    Text("E-mail")
+                        .bold()
+                    Text("\(user.email)")
+                }
+                .padding()
+                
+                VStack {
+                    Image(systemName: "person.badge.clock.fill")
+                        .font(.system(size: 25))
+                    Text("Conta criada em")
+                        .bold()
+                    Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .omitted))")
+                }
+                .padding()
+            }
+            Spacer()
         }
     }
 }
