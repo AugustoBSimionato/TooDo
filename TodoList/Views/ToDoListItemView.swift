@@ -29,17 +29,17 @@ struct ToDoListItemView: View {
             Button {
                 viewModel.toggleIsDone(item: item)
             } label: {
-                withAnimation(.easeIn(duration: 2)) {
-                    Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-                        .foregroundColor(.accentColor)
-                }
+                Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
+                    .foregroundColor(.accentColor)
             }
         }
+        .padding(2)
     }
 }
 
 struct ToDoListItemView_Previews: PreviewProvider {
     static var previews: some View {
         ToDoListItemView(item: .init(id: "123", title: "Get milk", dueDate: Date().timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, isDone: false))
+            .previewLayout(.sizeThatFits)
     }
 }

@@ -39,11 +39,10 @@
 		4E2548C22A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2548C12A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift */; };
 		4E31CC252A5CA9A00071DB15 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31CC242A5CA9A00071DB15 /* TermsView.swift */; };
 		4E362E412A182E320018FEE2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E362E402A182E320018FEE2 /* Extensions.swift */; };
-		4E3FA4232A452B7000FC051E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3FA4222A452B7000FC051E /* SettingsView.swift */; };
 		4E3FA4252A452C0800FC051E /* SettingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3FA4242A452C0800FC051E /* SettingsViewViewModel.swift */; };
-		4E681CC52A180A7100668BA6 /* TLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E681CC42A180A7100668BA6 /* TLButton.swift */; };
-		4EA1EC822A53B26000AED9D9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA1EC812A53B26000AED9D9 /* TimerView.swift */; };
+		4E9AD5782A8569E400647011 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9AD5772A8569E400647011 /* ListView.swift */; };
 		4EA642272A5775DA00431A01 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA642262A5775DA00431A01 /* Launch Screen.storyboard */; };
+		4EFEE1762A7928410072C018 /* FeaturesBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFEE1752A7928410072C018 /* FeaturesBoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,12 +101,11 @@
 		4E2548C12A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemViewViewModel.swift; sourceTree = "<group>"; };
 		4E31CC242A5CA9A00071DB15 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		4E362E402A182E320018FEE2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		4E3FA4222A452B7000FC051E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4E3FA4242A452C0800FC051E /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
-		4E681CC42A180A7100668BA6 /* TLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLButton.swift; sourceTree = "<group>"; };
 		4E8CF0422A44D6000007CE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4EA1EC812A53B26000AED9D9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		4E9AD5772A8569E400647011 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		4EA642262A5775DA00431A01 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4EFEE1752A7928410072C018 /* FeaturesBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,10 +210,9 @@
 				4E2548AB2A17B8B6008F7E9B /* LoginView.swift */,
 				4E2548AD2A17B8CC008F7E9B /* RegisterView.swift */,
 				4E2548AF2A17B909008F7E9B /* ToDoListItemView.swift */,
-				4E681CC42A180A7100668BA6 /* TLButton.swift */,
-				4E3FA4222A452B7000FC051E /* SettingsView.swift */,
-				4EA1EC812A53B26000AED9D9 /* TimerView.swift */,
 				4E31CC242A5CA9A00071DB15 /* TermsView.swift */,
+				4EFEE1752A7928410072C018 /* FeaturesBoardView.swift */,
+				4E9AD5772A8569E400647011 /* ListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -379,15 +376,14 @@
 			files = (
 				4E2548AC2A17B8B6008F7E9B /* LoginView.swift in Sources */,
 				4E25488D2A17AEC3008F7E9B /* MainView.swift in Sources */,
+				4EFEE1762A7928410072C018 /* FeaturesBoardView.swift in Sources */,
 				4E2548C02A17BAEA008F7E9B /* RegisterViewViewModel.swift in Sources */,
 				4E0B841F2A55ED68000B8A06 /* NotificationHandler.swift in Sources */,
 				4E2548B62A17BA74008F7E9B /* MainViewViewModel.swift in Sources */,
 				4E2548A82A17B764008F7E9B /* ToDoListView.swift in Sources */,
+				4E9AD5782A8569E400647011 /* ListView.swift in Sources */,
 				4E3FA4252A452C0800FC051E /* SettingsViewViewModel.swift in Sources */,
-				4EA1EC822A53B26000AED9D9 /* TimerView.swift in Sources */,
-				4E3FA4232A452B7000FC051E /* SettingsView.swift in Sources */,
 				4E2548AE2A17B8CC008F7E9B /* RegisterView.swift in Sources */,
-				4E681CC52A180A7100668BA6 /* TLButton.swift in Sources */,
 				4E2548B82A17BA8E008F7E9B /* ProfileViewViewModel.swift in Sources */,
 				4E2548A62A17B73C008F7E9B /* ProfileView.swift in Sources */,
 				4E2548B22A17B954008F7E9B /* User.swift in Sources */,
@@ -519,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -573,7 +569,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -589,6 +585,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodoList/Preview Content\"";
@@ -598,12 +595,13 @@
 				INFOPLIST_FILE = TodoList/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TooDo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "Usamos seu rosto para bloquear o app toda vez que sair dele";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Usamos seu rosto para bloquear o app toda vez que fizer login";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -611,12 +609,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.augusto.TodoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -626,6 +625,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodoList/Preview Content\"";
@@ -635,12 +635,13 @@
 				INFOPLIST_FILE = TodoList/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TooDo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "Usamos seu rosto para bloquear o app toda vez que sair dele";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Usamos seu rosto para bloquear o app toda vez que fizer login";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -648,12 +649,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.augusto.TodoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

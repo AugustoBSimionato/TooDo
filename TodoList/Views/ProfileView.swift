@@ -9,85 +9,114 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewViewModel()
+    @State var image: UIImage?
+    @State private var isAnimating = false
+    
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        NavigationView {
-            VStack {
-                if let user = viewModel.user {
-                    profileView(user: user)
-                } else {
-                    ProgressView()
-                    Text("Carregando perfil...")
-                        .padding()
+        NavigationStack {
+            ZStack {
+                Color.accentColor.opacity(0.1).ignoresSafeArea(.all)
+                
+                VStack {
+                    if let user = viewModel.user {
+                        profileView(user: user)
+                    } else {
+                        ProgressView()
+                        Text("Carregando perfil...")
+                            .padding()
+                    }
                 }
             }
-            .padding()
+            .opacity(isAnimating ? 1 : 0)
+            .onAppear {
+                withAnimation(.easeInOut(duration: 1.0)) {
+                    isAnimating = true
+                }
+            }
         }
         .onAppear {
             viewModel.fetchUser()
         }
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.backward.circle.fill")
-                            .font(.system(size: 20))
-                            .foregroundColor(Color("ButtonColor"))
-                            .bold()
-                    }
-                }
-                
-            }
-        }
+//        .navigationBarBackButtonHidden()
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button {
+//                    presentationMode.wrappedValue.dismiss()
+//                } label: {
+//                    HStack {
+//                        Image(systemName: "chevron.backward.circle.fill")
+//                            .font(.system(size: 20))
+//                            .foregroundColor(Color.accentColor)
+//                            .bold()
+//                    }
+//                }
+//            }
+//        }
     }
 }
 
 @ViewBuilder
 func profileView(user: User) -> some View {
     VStack {
-        VStack {
-            Button {
-                
-            } label: {
-                Image(systemName: "person.crop.circle")
+        ZStack {
+            Rectangle()
+                .foregroundColor(.clear)
+                .background(Color("BackgroundCard"))
+                .frame(width: 360, height: 470)
+                .cornerRadius(20)
+            
+            VStack {
+                Image("profile-pic")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
-            }
-            .padding(.bottom, 20)
-            
-            Text(user.name)
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.top, 20)
-                .padding(.bottom, 30)
-            
-            VStack {
-                VStack {
-                    Image(systemName: "envelope.fill")
-                        .font(.system(size: 25))
-                    Text("E-mail")
-                        .bold()
-                    Text("\(user.email)")
-                }
-                .padding()
                 
-                VStack {
-                    Image(systemName: "person.badge.clock.fill")
-                        .font(.system(size: 25))
-                    Text("Conta criada em")
-                        .bold()
-                    Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .omitted))")
+                Text(user.name)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 10)
+                    .padding(.bottom, 30)
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .background(Color("BackgroundFields"))
+                        .frame(width: 290, height: 50)
+                        .cornerRadius(12)
+                        .shadow(color: .black.opacity(0.2), radius: 4)
+                    
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                            .foregroundColor(.accentColor)
+                        Text(user.email)
+                    }
+                    .frame(width: 290, height: 50)
+                    .padding(.leading)
                 }
-                .padding()
+                .padding(.bottom, 15)
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .background(Color("BackgroundFields"))
+                        .frame(width: 290, height: 50)
+                        .cornerRadius(12)
+                        .shadow(color: .black.opacity(0.2), radius: 4)
+                    
+                    HStack {
+                        Image(systemName: "person.badge.clock.fill")
+                            .foregroundColor(.accentColor)
+                        Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
+                    }
+                    .frame(width: 290, height: 50)
+                    .padding(.leading)
+                }
             }
-            Spacer()
         }
     }
+    .navigationTitle("Perfil")
 }
 
 struct ProfileView_Previews: PreviewProvider {

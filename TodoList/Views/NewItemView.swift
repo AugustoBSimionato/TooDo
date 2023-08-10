@@ -29,18 +29,31 @@ struct NewItemView: View {
             .scrollContentBackground(.hidden)
             .shadow(radius: 5)
             
-            TLButton(title: "Adicionar") {
-                if viewModel.canSave {
-                    viewModel.save()
-                    notify.sendScheduleNotification(date: viewModel.dueDate, title: "Já finalizou essa tarefa? 🤔", body: viewModel.title)
-                    newItemPresented = false
-                } else {
-                    viewModel.showAlert = true
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .background(Color.accentColor)
+                    .frame(width: 250, height: 50)
+                    .cornerRadius(16)
+                
+                Button {
+                    if viewModel.canSave {
+                        viewModel.save()
+                        notify.sendScheduleNotification(date: viewModel.dueDate, title: "Já finalizou essa tarefa? 🤔", body: viewModel.title)
+                        newItemPresented = false
+                    } else {
+                        viewModel.showAlert = true
+                    }
+                } label: {
+                    Text("Adicionar")
+                        .foregroundColor(.white)
+                        .font(.system(size: 18, weight: .semibold, design: .rounded))
                 }
             }
-            .frame(width: 200, height: 80)
+            .shadow(color: .accentColor.opacity(0.8), radius: 5)
+            .padding(.bottom, 40)
             .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text("Estranho...🤨"), message: Text("Alguma coisa está faltando, dê uma olhada"))
+                Alert(title: Text("Estranho...🤨"), message: Text("Acho que você esqueceu de descrever a tarefa, dê uma olhada!"))
             }
         }
     }

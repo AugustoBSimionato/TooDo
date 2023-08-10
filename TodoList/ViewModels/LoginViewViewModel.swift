@@ -22,7 +22,6 @@ class LoginViewViewModel: ObservableObject {
             return
         }
         
-//      Try log in
         Auth.auth().signIn(withEmail: email, password: password)
     }
     

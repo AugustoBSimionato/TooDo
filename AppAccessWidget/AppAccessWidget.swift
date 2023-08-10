@@ -40,26 +40,40 @@ struct SimpleEntry: TimelineEntry {
 
 struct AppAccessWidgetEntryView : View {
     @Environment(\.widgetFamily) var widgetFamily
-    var entry: Provider.Entry
+//    var entry: Provider.Entry
 
     var body: some View {
         switch widgetFamily {
         case .accessoryCircular:
             VStack {
-                Image(systemName: "square.and.pencil.circle.fill")
-                    .font(.system(size: 50))
+                Image(systemName: "list.bullet.circle.fill")
+                    .font(.system(size: 58))
             }
         case .systemSmall:
             ZStack {
-                Color("backgroundColor")
+                Color.accentColor.opacity(0.3)
                 
                 VStack {
-                    Image(systemName: "square.and.pencil.circle.fill")
+                    Image(systemName: "list.bullet.circle.fill")
                         .font(.system(size: 70))
-                        .foregroundColor(.white)
+                        .foregroundColor(.accentColor)
                         .padding(.bottom, 2)
-                    Text("Adicionar tarefa")
-                        .foregroundColor(.white)
+                    Text("Ver tarefas")
+                        .foregroundColor(.accentColor)
+                }
+            }
+        case .systemMedium:
+            ZStack {
+                Color.accentColor.opacity(0.3)
+                
+                HStack {
+                    Text("Ver tarefas")
+                        .foregroundColor(.accentColor)
+                        .bold()
+                        .font(.system(size: 23))
+                    Image(systemName: "list.bullet.circle.fill")
+                        .font(.system(size: 40))
+                        .foregroundColor(.accentColor)
                 }
             }
         default:
@@ -73,21 +87,25 @@ struct AppAccessWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            AppAccessWidgetEntryView(entry: entry)
+            AppAccessWidgetEntryView()
         }
         .configurationDisplayName("TooDo")
         .description("Acesse sua lista de tarefas em um clique!")
-        .supportedFamilies([.accessoryCircular, .systemSmall])
+        .supportedFamilies([.accessoryCircular, .systemSmall, .systemMedium])
     }
 }
 
 struct AppAccessWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AppAccessWidgetEntryView(entry: SimpleEntry(date: Date()))
+        AppAccessWidgetEntryView()
             .previewContext(WidgetPreviewContext(family: .systemSmall))
             .previewDisplayName("small")
-        AppAccessWidgetEntryView(entry: SimpleEntry(date: Date()))
+        AppAccessWidgetEntryView()
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
+            .previewDisplayName("medium")
+        AppAccessWidgetEntryView()
             .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            .previewLayout(.sizeThatFits)
             .previewDisplayName("circular")
     }
 }
