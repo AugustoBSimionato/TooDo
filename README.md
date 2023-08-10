@@ -10,5 +10,5 @@
 * Framework: SwiftUI
 * Database: Firebase from Google
 
-## Where I get this app?
+## Where I can get this app?
 <p>Link with apple store button</p>
