@@ -32,74 +32,113 @@ struct ToDoListView: View {
     }
     
     var body: some View {
-        NavigationSplitView {
-            List {
-                NavigationLink(destination: ListView(userId: userId)) {
-                    HStack {
-                        Image(systemName: "checklist.rtl")
-                        Text("Lista de tarefas")
-                    }
+        NavigationStack {
+            VStack {
+                List(filteredTasks) { item in
+                    ToDoListItemView(item: item)
+                        .swipeActions {
+                            Button {
+                                viewModel.delete(id: item.id)
+                            } label: {
+                                Image(systemName: "trash.fill")
+                            }
+                            .tint(.red)
+                            .onTapGesture {
+                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                impactMed.impactOccurred()
+                            }
+                        }
                 }
-                NavigationLink(destination: ProfileView()) {
-                    HStack {
-                        Image(systemName: "person.crop.circle")
-                        Text("Perfil")
+                .listStyle(.sidebar)
+                .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Buscar tarefa")
+                .overlay(alignment: .bottomTrailing) {
+                    Button {
+                        viewModel.showingNewItemView = true
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .font(.system(size: 28, weight: .medium))
+                            .bold()
+                            .foregroundColor(Color.accentColor)
+                            .frame(width: 60, height: 60)
+                            .background {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color.accentColor).opacity(0.4)
+                            }
+                            .shadow(radius: 15)
                     }
-                }
-                NavigationLink(destination: TermsView()) {
-                    HStack {
-                        Image(systemName: "person.badge.shield.checkmark.fill")
-                        Text("Termos e Condições de Uso")
-                    }
-                }
-                Button(role: .destructive) {
-                    viewModelProfile.logout()
-                } label: {
-                    HStack {
-                        Image(systemName: "rectangle.portrait.and.arrow.forward.fill")
-                        Text("Sair")
-                    }
-                    
+                    .padding(.trailing, 45)
+                    .padding(.bottom, 40)
                 }
             }
-            .navigationTitle("Menu")
+            .navigationTitle("Tarefas")
             .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItem {
-//                    Menu {
-//                        NavigationLink(destination: ProfileView()) {
-//                            HStack {
-//                                Text("Perfil")
-//                                Image(systemName: "person.crop.circle")
-//                            }
-//                        }
-//                        
-//                        NavigationLink(destination: TermsView()) {
-//                            HStack {
-//                                Text("Termos e Condições de Uso")
-//                                Image(systemName: "person.badge.shield.checkmark.fill")
-//                            }
-//                        }
-//                        
-//                        Button(role: .destructive) {
-//                            viewModelProfile.logout()
-//                        } label: {
-//                            HStack {
-//                                Text("Sair")
-//                                Image(systemName: "rectangle.portrait.and.arrow.forward.fill")
-//                            }
-//                            
-//                        }
-//                    } label: {
-//                        Image(systemName: "ellipsis.circle.fill")
-//                            .font(.system(size: 17))
-//                            .foregroundColor(Color.accentColor)
+            .sheet(isPresented: $viewModel.showingNewItemView) {
+                NewItemView(newItemPresented: $viewModel.showingNewItemView)
+            }
+            .toolbar {
+                ToolbarItem {
+                    Menu {
+                        NavigationLink(destination: ProfileView()) {
+                            HStack {
+                                Text("Perfil")
+                                Image(systemName: "person.crop.circle")
+                            }
+                        }
+                        
+                        NavigationLink(destination: TermsView()) {
+                            HStack {
+                                Text("Termos e Condições de Uso")
+                                Image(systemName: "person.badge.shield.checkmark.fill")
+                            }
+                        }
+                        
+                        Button(role: .destructive) {
+                            viewModelProfile.logout()
+                        } label: {
+                            HStack {
+                                Text("Sair")
+                                Image(systemName: "rectangle.portrait.and.arrow.forward.fill")
+                            }
+                            
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle.fill")
+                            .font(.system(size: 17))
+                            .foregroundColor(Color.accentColor)
+                    }
+                }
+            }
+//            List {
+//                NavigationLink(destination: ListView(userId: userId)) {
+//                    HStack {
+//                        Image(systemName: "checklist.rtl")
+//                        Text("Lista de tarefas")
 //                    }
 //                }
+//                NavigationLink(destination: ProfileView()) {
+//                    HStack {
+//                        Image(systemName: "person.crop.circle")
+//                        Text("Perfil")
+//                    }
+//                }
+//                NavigationLink(destination: TermsView()) {
+//                    HStack {
+//                        Image(systemName: "person.badge.shield.checkmark.fill")
+//                        Text("Termos e Condições de Uso")
+//                    }
+//                }
+//                Button(role: .destructive) {
+//                    viewModelProfile.logout()
+//                } label: {
+//                    HStack {
+//                        Image(systemName: "rectangle.portrait.and.arrow.forward.fill")
+//                        Text("Sair")
+//                    }
+//
+//                }
 //            }
-            
-        } detail: {
-            ListView(userId: userId)
+//        } detail: {
+//            ListView(userId: userId)
         }
     }
 }

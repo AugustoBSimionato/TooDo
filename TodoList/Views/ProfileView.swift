@@ -39,21 +39,21 @@ struct ProfileView: View {
         .onAppear {
             viewModel.fetchUser()
         }
-//        .navigationBarBackButtonHidden()
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button {
-//                    presentationMode.wrappedValue.dismiss()
-//                } label: {
-//                    HStack {
-//                        Image(systemName: "chevron.backward.circle.fill")
-//                            .font(.system(size: 20))
-//                            .foregroundColor(Color.accentColor)
-//                            .bold()
-//                    }
-//                }
-//            }
-//        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.backward.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(Color.accentColor)
+                            .bold()
+                    }
+                }
+            }
+        }
     }
 }
 
