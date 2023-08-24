@@ -27,13 +27,18 @@ struct ToDoListItemView: View {
             Spacer()
             
             Button {
-                viewModel.toggleIsDone(item: item)
+                
             } label: {
                 Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
                     .foregroundColor(.accentColor)
             }
         }
-        .padding(2)
+        .onTapGesture {
+            let impactMed = UIImpactFeedbackGenerator(style: .soft)
+            impactMed.impactOccurred()
+            viewModel.toggleIsDone(item: item)
+        }
+        .padding(10)
     }
 }
 

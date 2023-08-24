@@ -53,7 +53,7 @@ struct ToDoListView: View {
                 .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Buscar tarefa")
                 .overlay(alignment: .bottomTrailing) {
                     Button {
-                        viewModel.showingNewItemView = true
+                        
                     } label: {
                         Image(systemName: "square.and.pencil")
                             .font(.system(size: 28, weight: .medium))
@@ -65,6 +65,11 @@ struct ToDoListView: View {
                                     .fill(Color.accentColor).opacity(0.4)
                             }
                             .shadow(radius: 15)
+                            .onTapGesture {
+                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                impactMed.impactOccurred()
+                                viewModel.showingNewItemView = true
+                            }
                     }
                     .padding(.trailing, 45)
                     .padding(.bottom, 40)
@@ -102,8 +107,9 @@ struct ToDoListView: View {
                             
                         }
                     } label: {
-                        Image(systemName: "ellipsis.circle.fill")
+                        Image(systemName: "ellipsis.circle")
                             .font(.system(size: 17))
+                            .bold()
                             .foregroundColor(Color.accentColor)
                     }
                 }

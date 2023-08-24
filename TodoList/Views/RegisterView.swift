@@ -19,12 +19,6 @@ struct RegisterView: View {
                 
                 VStack {
                     ZStack {
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .background(Color("BackgroundCard"))
-                            .frame(width: 365, height: 550)
-                            .cornerRadius(25)
-                        
                         VStack {
                             Text("Que bom te ver aqui 🤩")
                                 .font(.title)
@@ -106,17 +100,17 @@ struct RegisterView: View {
                             NavigationLink {
                                 TermsView()
                             } label: {
-                                Text("Termos e Condições de Uso")
-                                    .padding(.top)
+                                Text("Ao criar uma conta você concorda com os **Termos e Condições de Uso**")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 240)
                                     .font(.callout)
-                                    .bold()
                             }
 
                             ZStack {
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .background(Color.accentColor)
-                                    .frame(width: 250, height: 50)
+                                    .frame(width: 240, height: 45)
                                     .cornerRadius(16)
                                 
                                 Button {
@@ -128,7 +122,7 @@ struct RegisterView: View {
                                 }
                             }
                             .shadow(color: .accentColor.opacity(0.8), radius: 5)
-                            .padding(.top, 30)
+                            .padding(.top, 15)
                         }
                     }
                     .padding(.bottom, 30)

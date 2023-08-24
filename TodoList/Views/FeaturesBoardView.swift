@@ -81,7 +81,6 @@ struct OnBoard2View: View {
     
     var body: some View {
         VStack {
-            Spacer()
             Image(image)
                 .resizable()
                 .frame(width: 150, height: 150)
@@ -108,7 +107,7 @@ struct OnBoard2View: View {
                 ZStack {
                     Rectangle()
                         .foregroundColor(.accentColor)
-                        .frame(width: 250, height: 50)
+                        .frame(width: 240, height: 45)
                         .cornerRadius(16)
                     
                     HStack {
@@ -120,8 +119,6 @@ struct OnBoard2View: View {
                 .opacity(isAnimatingButton ? 1 : 0)
                 .shadow(color: .accentColor.opacity(0.8), radius: 5)
             }
-            
-            Spacer()
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 2.0)) {

@@ -23,12 +23,6 @@ struct LoginView: View {
                     Spacer()
                     
                     ZStack {
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .background(Color("BackgroundCard"))
-                            .frame(width: 360, height: 470)
-                            .cornerRadius(20)
-                        
                         VStack {
                             Text("Bem vindo!")
                                 .font(.title)
@@ -87,7 +81,7 @@ struct LoginView: View {
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .background(Color.accentColor)
-                                    .frame(width: 250, height: 50)
+                                    .frame(width: 240, height: 45)
                                     .cornerRadius(16)
                                 
                                 Button {
