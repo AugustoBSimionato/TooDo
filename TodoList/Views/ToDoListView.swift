@@ -78,7 +78,15 @@ struct ToDoListView: View {
             .navigationTitle("Tarefas")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $viewModel.showingNewItemView) {
-                NewItemView(newItemPresented: $viewModel.showingNewItemView)
+                NavigationStack {
+                    NewItemView(newItemPresented: $viewModel.showingNewItemView)
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                Text("Nova tarefa")
+                                    .font(.system(size: 22, weight: .semibold, design: .rounded))
+                            }
+                        }
+                }
             }
             .toolbar {
                 ToolbarItem {
@@ -107,7 +115,7 @@ struct ToDoListView: View {
                             
                         }
                     } label: {
-                        Image(systemName: "ellipsis.circle")
+                        Image(systemName: "ellipsis.circle.fill")
                             .font(.system(size: 17))
                             .bold()
                             .foregroundColor(Color.accentColor)

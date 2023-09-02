@@ -95,6 +95,8 @@ struct RegisterView: View {
                                 Text(viewModel.errorMessage)
                                     .foregroundColor(Color.accentColor)
                                     .bold()
+                                    .padding(.top)
+                                    .padding(.bottom)
                             }
                             
                             NavigationLink {

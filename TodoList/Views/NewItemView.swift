@@ -15,11 +15,6 @@ struct NewItemView: View {
     
     var body: some View {
         VStack {
-            Text("Nova tarefa")
-                .padding(.top, 30)
-                .font(.system(size: 23))
-                .bold()
-            
             Form {
                 TextField("Descreva a tarefa...", text: $viewModel.title)
                 DatePicker("", selection: $viewModel.dueDate, in: Date()...)
@@ -50,12 +45,12 @@ struct NewItemView: View {
                         .font(.system(size: 18, weight: .semibold, design: .rounded))
                 }
             }
-            .shadow(color: .accentColor.opacity(0.8), radius: 5)
             .padding(.bottom, 40)
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text("Estranho...🤨"), message: Text("Acho que você esqueceu de descrever a tarefa, dê uma olhada!"))
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

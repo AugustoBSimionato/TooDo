@@ -1,8 +1,8 @@
 //
-//  AppAccessWidget.swift
-//  AppAccessWidget
+//  TodoListWidgets.swift
+//  TodoListWidgets
 //
-//  Created by Augusto Simionato on 24/05/23.
+//  Created by Augusto Simionato on 02/09/23.
 //
 
 import WidgetKit
@@ -38,28 +38,32 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
 }
 
-struct AppAccessWidgetEntryView : View {
+struct TodoListWidgetsEntryView : View {
     @Environment(\.widgetFamily) var widgetFamily
-//    var entry: Provider.Entry
 
     var body: some View {
         switch widgetFamily {
         case .accessoryCircular:
-            VStack {
-                Image(systemName: "list.bullet.circle.fill")
-                    .font(.system(size: 58))
+            ZStack {
+                Color.gray.opacity(0.3)
+                VStack {
+                    Image(systemName: "list.bullet.circle.fill")
+                        .font(.system(size: 35))
+                }
             }
         case .systemSmall:
             ZStack {
                 Color.accentColor.opacity(0.3)
                 
-                VStack {
+                VStack(spacing: 5) {
                     Image(systemName: "list.bullet.circle.fill")
-                        .font(.system(size: 70))
+                        .font(.system(size: 40))
                         .foregroundColor(.accentColor)
-                        .padding(.bottom, 2)
                     Text("Ver tarefas")
                         .foregroundColor(.accentColor)
+                        .bold()
+                        .font(.system(size: 23))
+                        .multilineTextAlignment(.center)
                 }
             }
         case .systemMedium:
@@ -76,34 +80,48 @@ struct AppAccessWidgetEntryView : View {
                         .foregroundColor(.accentColor)
                 }
             }
+        case .systemLarge:
+            ZStack {
+                Color.accentColor.opacity(0.3)
+                
+                HStack {
+                    Text("Ver tarefas")
+                        .foregroundColor(.accentColor)
+                        .bold()
+                        .font(.system(size: 23))
+                    Image(systemName: "list.bullet.circle.fill")
+                        .font(.system(size: 40))
+                        .foregroundColor(.accentColor)
+                }
+            }
         default:
-            Text("Not implemented")
+            Text("Ainda não implementamos esse widget...")
         }
     }
 }
 
-struct AppAccessWidget: Widget {
-    let kind: String = "AppAccessWidget"
+struct TodoListWidgets: Widget {
+    let kind: String = "TodoListWidgets"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            AppAccessWidgetEntryView()
+            TodoListWidgetsEntryView()
         }
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular])
         .configurationDisplayName("TooDo")
-        .description("Acesse sua lista de tarefas em um clique!")
-        .supportedFamilies([.accessoryCircular, .systemSmall, .systemMedium])
+        .description("Adicione widgets que te ajudam a manter você atualizado sobre as tarefas que estão para ser concluídas!")
     }
 }
 
-struct AppAccessWidget_Previews: PreviewProvider {
+struct TodoListWidgets_Previews: PreviewProvider {
     static var previews: some View {
-        AppAccessWidgetEntryView()
+        TodoListWidgetsEntryView()
             .previewContext(WidgetPreviewContext(family: .systemSmall))
             .previewDisplayName("small")
-        AppAccessWidgetEntryView()
+        TodoListWidgetsEntryView()
             .previewContext(WidgetPreviewContext(family: .systemMedium))
             .previewDisplayName("medium")
-        AppAccessWidgetEntryView()
+        TodoListWidgetsEntryView()
             .previewContext(WidgetPreviewContext(family: .accessoryCircular))
             .previewLayout(.sizeThatFits)
             .previewDisplayName("circular")

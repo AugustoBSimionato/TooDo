@@ -14,31 +14,29 @@ struct ToDoListItemView: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(item.title)
-                    .font(.body)
-                    .bold()
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
                 
-                Text("Terminar até \(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .shortened))")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+                HStack {
+                    Image(systemName: "calendar.badge.clock.rtl")
+                        .bold()
+                    Text("\(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .shortened))")
+                }
+                .font(.system(size: 14, weight: .regular, design: .rounded))
+                .foregroundColor(.gray)
             }
             
             Spacer()
             
             Button {
-                
+                viewModel.toggleIsDone(item: item)
             } label: {
                 Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
                     .foregroundColor(.accentColor)
             }
         }
-        .onTapGesture {
-            let impactMed = UIImpactFeedbackGenerator(style: .soft)
-            impactMed.impactOccurred()
-            viewModel.toggleIsDone(item: item)
-        }
-        .padding(10)
+        .padding(8)
     }
 }
 

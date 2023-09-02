@@ -86,7 +86,6 @@ func profileView(user: User) -> some View {
                     Text(user.email)
                 }
                 .frame(width: 290, height: 50)
-                .padding(.leading)
             }
             .padding(.bottom, 15)
             
@@ -104,7 +103,6 @@ func profileView(user: User) -> some View {
                     Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
                 }
                 .frame(width: 290, height: 50)
-                .padding(.leading)
             }
         }
     }

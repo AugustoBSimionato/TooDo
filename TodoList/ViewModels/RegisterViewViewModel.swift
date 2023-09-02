@@ -38,29 +38,46 @@ class RegisterViewViewModel: ObservableObject {
         
         db.collection("users")
             .document(id)
-            .setData(newUser.asDictionary())
+            .setData(newUser.asDictionary()) { [weak self] error in
+                if let error = error {
+                    // Handle error on the main thread
+                    DispatchQueue.main.async {
+                        self?.errorMessage = "Error: \(error.localizedDescription)"
+                    }
+                }
+            }
     }
     
     private func validate() -> Bool {
+        DispatchQueue.main.async {
+            self.errorMessage = ""
+        }
+        
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty,
               !email.trimmingCharacters(in: .whitespaces).isEmpty,
               !password.trimmingCharacters(in: .whitespaces).isEmpty else {
             
-            errorMessage = "Campos estão vazios"
-            
+            DispatchQueue.main.async {
+                self.errorMessage = "Campos estão vazios"
+            }
             return false
         }
         
         guard email.contains("@") && email.contains(".") else {
-            errorMessage = "Acho que faltou um @ ou um . no email"
-            
+            DispatchQueue.main.async {
+                self.errorMessage = "Acho que faltou um @ ou um . no email"
+            }
             return false
         }
         
         guard password.count >= 6 else {
+            DispatchQueue.main.async {
+                self.errorMessage = "Senha deve ter no mínimo 6 dígitos"
+            }
             return false
         }
-            
+        
         return true
     }
 }
+

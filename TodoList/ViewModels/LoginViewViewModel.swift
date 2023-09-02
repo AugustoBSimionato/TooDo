@@ -26,19 +26,25 @@ class LoginViewViewModel: ObservableObject {
     }
     
     private func validate() -> Bool {
-        errorMessage = ""
+        DispatchQueue.main.async {
+            self.errorMessage = ""
+        }
+        
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty, !password.trimmingCharacters(in: .whitespaces).isEmpty else {
-            errorMessage = "Email ou senha incorretos"
-            
+            DispatchQueue.main.async {
+                self.errorMessage = "Email ou senha incorretos"
+            }
             return false
         }
         
         guard email.contains("@") && email.contains(".") else {
-            errorMessage = "Acho que faltou um @ ou um . no email"
-            
+            DispatchQueue.main.async {
+                self.errorMessage = "Acho que faltou um @ ou um . no email"
+            }
             return false
         }
         
         return true
     }
 }
+
