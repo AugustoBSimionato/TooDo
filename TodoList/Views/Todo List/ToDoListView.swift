@@ -75,6 +75,7 @@ struct ToDoListView: View {
                     .padding(.bottom, 40)
                 }
             }
+            .ignoresSafeArea(.keyboard)
             .navigationTitle("Tarefas")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $viewModel.showingNewItemView) {
