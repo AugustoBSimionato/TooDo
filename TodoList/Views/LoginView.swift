@@ -122,6 +122,7 @@ struct LoginView: View {
                     }
                     .padding(.bottom)
                 }
+                .ignoresSafeArea(.keyboard)
                 .opacity(isAnimating ? 1 : 0)
             }
             .onAppear(perform: {

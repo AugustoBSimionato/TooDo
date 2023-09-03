@@ -129,6 +129,7 @@ struct RegisterView: View {
                     }
                     .padding(.bottom, 30)
                 }
+                .ignoresSafeArea(.keyboard)
                 .opacity(isAnimating ? 1 : 0)
             }
             .navigationBarBackButtonHidden()
