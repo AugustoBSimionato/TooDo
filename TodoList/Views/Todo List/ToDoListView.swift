@@ -48,6 +48,20 @@ struct ToDoListView: View {
                                 impactMed.impactOccurred()
                             }
                         }
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                viewModel.delete(id: item.id)
+                            } label: {
+                                HStack {
+                                    Text("Apagar tarefa")
+                                    Image(systemName: "trash.fill")
+                                }
+                            }
+                            .onLongPressGesture {
+                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                impactMed.impactOccurred()
+                            }
+                        }
                 }
                 .listStyle(.sidebar)
                 .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Buscar tarefa")
