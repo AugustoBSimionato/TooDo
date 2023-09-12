@@ -16,17 +16,13 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color.accentColor.opacity(0.1).ignoresSafeArea(.all)
-                
-                VStack {
-                    if let user = viewModel.user {
-                        profileView(user: user)
-                    } else {
-                        ProgressView()
-                        Text("Carregando perfil...")
-                            .padding()
-                    }
+            VStack {
+                if let user = viewModel.user {
+                    profileView(user: user)
+                } else {
+                    ProgressView()
+                    Text("Carregando perfil...")
+                        .padding()
                 }
             }
             .opacity(isAnimating ? 1 : 0)
@@ -67,8 +63,7 @@ func profileView(user: User) -> some View {
                 .frame(width: 110, height: 110)
             
             Text(user.name)
-                .font(.title)
-                .fontWeight(.bold)
+                .font(.system(size: 25, weight: .semibold, design: .rounded))
                 .padding(.top, 10)
                 .padding(.bottom, 30)
             
@@ -84,6 +79,7 @@ func profileView(user: User) -> some View {
                     Image(systemName: "envelope.fill")
                         .foregroundColor(.accentColor)
                     Text(user.email)
+                        .font(.system(size: 18, weight: .regular, design: .rounded))
                 }
                 .frame(width: 290, height: 50)
             }
@@ -101,6 +97,7 @@ func profileView(user: User) -> some View {
                     Image(systemName: "person.badge.clock.fill")
                         .foregroundColor(.accentColor)
                     Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
+                        .font(.system(size: 17, weight: .regular, design: .rounded))
                 }
                 .frame(width: 290, height: 50)
             }

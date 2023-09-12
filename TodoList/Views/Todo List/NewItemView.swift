@@ -20,9 +20,9 @@ struct NewItemView: View {
                 DatePicker("", selection: $viewModel.dueDate, in: Date()...)
                     .datePickerStyle(.graphical)
             }
+            .shadow(radius: 5)
             .scrollDisabled(true)
             .scrollContentBackground(.hidden)
-            .shadow(radius: 5)
             
             ZStack {
                 Rectangle()

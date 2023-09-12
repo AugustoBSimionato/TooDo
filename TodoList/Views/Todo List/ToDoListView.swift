@@ -137,37 +137,37 @@ struct ToDoListView: View {
                     }
                 }
             }
-//            List {
-//                NavigationLink(destination: ListView(userId: userId)) {
-//                    HStack {
-//                        Image(systemName: "checklist.rtl")
-//                        Text("Lista de tarefas")
-//                    }
-//                }
-//                NavigationLink(destination: ProfileView()) {
-//                    HStack {
-//                        Image(systemName: "person.crop.circle")
-//                        Text("Perfil")
-//                    }
-//                }
-//                NavigationLink(destination: TermsView()) {
-//                    HStack {
-//                        Image(systemName: "person.badge.shield.checkmark.fill")
-//                        Text("Termos e Condições de Uso")
-//                    }
-//                }
-//                Button(role: .destructive) {
-//                    viewModelProfile.logout()
-//                } label: {
-//                    HStack {
-//                        Image(systemName: "rectangle.portrait.and.arrow.forward.fill")
-//                        Text("Sair")
-//                    }
-//
-//                }
-//            }
-//        } detail: {
-//            ListView(userId: userId)
+            //            List {
+            //                NavigationLink(destination: ListView(userId: userId)) {
+            //                    HStack {
+            //                        Image(systemName: "checklist.rtl")
+            //                        Text("Lista de tarefas")
+            //                    }
+            //                }
+            //                NavigationLink(destination: ProfileView()) {
+            //                    HStack {
+            //                        Image(systemName: "person.crop.circle")
+            //                        Text("Perfil")
+            //                    }
+            //                }
+            //                NavigationLink(destination: TermsView()) {
+            //                    HStack {
+            //                        Image(systemName: "person.badge.shield.checkmark.fill")
+            //                        Text("Termos e Condições de Uso")
+            //                    }
+            //                }
+            //                Button(role: .destructive) {
+            //                    viewModelProfile.logout()
+            //                } label: {
+            //                    HStack {
+            //                        Image(systemName: "rectangle.portrait.and.arrow.forward.fill")
+            //                        Text("Sair")
+            //                    }
+            //
+            //                }
+            //            }
+            //        } detail: {
+            //            ListView(userId: userId)
         }
     }
 }
@@ -175,6 +175,6 @@ struct ToDoListView: View {
 struct ToDoListView_Previews: PreviewProvider {
     static var previews: some View {
         ToDoListView(userId: "odW3M0pBqYb2tY4tLzJlum3nzK83")
-//            .previewInterfaceOrientation(.landscapeLeft)
+        //            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

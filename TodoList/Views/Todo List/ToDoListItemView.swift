@@ -23,8 +23,8 @@ struct ToDoListItemView: View {
                         .bold()
                     Text("\(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .shortened))")
                 }
+                .foregroundColor(Color("TextItemList"))
                 .font(.system(size: 14, weight: .regular, design: .rounded))
-                .foregroundColor(.gray)
             }
             
             Spacer()

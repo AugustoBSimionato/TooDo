@@ -21,89 +21,90 @@ struct LoginView: View {
                 
                 VStack {
                     Spacer()
-                    
-                    ZStack {
-                        VStack {
-                            Text("Bem vindo!")
-                                .font(.title)
-                                .bold()
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("Olá! 👋")
+                                .font(.system(size: 35, weight: .bold, design: .rounded))
                                 .foregroundColor(.accentColor)
                                 .padding(.bottom, 1)
                             
                             Text("Faça login para continuar!")
-                                .padding(.bottom, 50)
-                            
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(.clear)
-                                    .background(Color("BackgroundFields"))
-                                    .frame(width: 290, height: 50)
-                                    .cornerRadius(12)
-                                    .shadow(color: .black.opacity(0.2), radius: 4)
-                                
-                                HStack {
-                                    Image(systemName: "envelope.fill")
-                                        .foregroundColor(.accentColor)
-                                    TextField("Email", text: $viewModel.email)
-                                        .textInputAutocapitalization(.never)
-                                }
+                                .font(.system(size: 17, weight: .semibold,design: .rounded))
+                        }
+                        .padding(.bottom, 80)
+                        .padding(.trailing, 80)
+                        
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(.clear)
+                                .background(Color("BackgroundFields"))
                                 .frame(width: 290, height: 50)
-                                .padding(.leading, 25)
-                            }
-                            .padding(.bottom, 15)
+                                .cornerRadius(12)
+                                .shadow(color: .black.opacity(0.2), radius: 4)
                             
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(.clear)
-                                    .background(Color("BackgroundFields"))
-                                    .frame(width: 290, height: 50)
-                                    .cornerRadius(12)
-                                    .shadow(color: .black.opacity(0.2), radius: 4)
-                                
-                                HStack {
-                                    Image(systemName: "lock.fill")
-                                        .foregroundColor(.accentColor)
-                                    SecureField("Senha", text: $viewModel.password)
-                                        .textContentType(.password)
-                                }
+                            HStack {
+                                Image(systemName: "envelope.fill")
+                                    .foregroundColor(.accentColor)
+                                TextField("Email", text: $viewModel.email)
+                                    .textInputAutocapitalization(.never)
+                                    .keyboardType(.emailAddress)
+                            }
+                            .frame(width: 290, height: 50)
+                            .padding(.leading, 25)
+                        }
+                        .padding(.bottom, 15)
+                        
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(.clear)
+                                .background(Color("BackgroundFields"))
                                 .frame(width: 290, height: 50)
-                                .padding(.leading, 25)
-                            }
+                                .cornerRadius(12)
+                                .shadow(color: .black.opacity(0.2), radius: 4)
                             
-                            if !viewModel.errorMessage.isEmpty {
-                                Text(viewModel.errorMessage)
-                                    .foregroundColor(Color.accentColor)
-                                    .bold()
-                                    .padding(.top)
+                            HStack {
+                                Image(systemName: "lock.fill")
+                                    .foregroundColor(.accentColor)
+                                SecureField("Senha", text: $viewModel.password)
+                                    .textContentType(.password)
                             }
+                            .frame(width: 290, height: 50)
+                            .padding(.leading, 25)
+                        }
+                        
+                        if !viewModel.errorMessage.isEmpty {
+                            Text(viewModel.errorMessage)
+                                .foregroundColor(Color.accentColor)
+                                .bold()
+                                .padding(.top)
+                        }
+                        
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(.clear)
+                                .background(Color.accentColor)
+                                .frame(width: 240, height: 45)
+                                .cornerRadius(16)
                             
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(.clear)
-                                    .background(Color.accentColor)
-                                    .frame(width: 240, height: 45)
-                                    .cornerRadius(16)
+                            Button {
+                                let context = LAContext()
+                                var error: NSError?
                                 
-                                Button {
-                                    let context = LAContext()
-                                    var error: NSError?
-
-                                    if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                                        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Para sua segurança") { success, authenticationError in
-                                            if success {
-                                                viewModel.login()
-                                            }
+                                if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                                    context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Para sua segurança") { success, authenticationError in
+                                        if success {
+                                            viewModel.login()
                                         }
                                     }
-                                } label: {
-                                    Text("Entrar")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
                                 }
+                            } label: {
+                                Text("Entrar")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
                             }
-                            .shadow(color: .accentColor.opacity(0.8), radius: 5)
-                            .padding(.top, 40)
                         }
+                        .shadow(color: .accentColor.opacity(0.8), radius: 5)
+                        .padding(.top, 40)
                     }
                     
                     Spacer()
