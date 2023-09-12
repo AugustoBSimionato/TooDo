@@ -65,29 +65,29 @@ struct ToDoListView: View {
                 }
                 .listStyle(.sidebar)
                 .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Buscar tarefa")
-                .overlay(alignment: .bottomTrailing) {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "square.and.pencil")
-                            .font(.system(size: 28, weight: .medium))
-                            .bold()
-                            .foregroundColor(Color.accentColor)
-                            .frame(width: 60, height: 60)
-                            .background {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(Color.accentColor).opacity(0.4)
-                            }
-                            .shadow(radius: 15)
-                            .onTapGesture {
-                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                                impactMed.impactOccurred()
-                                viewModel.showingNewItemView = true
-                            }
-                    }
-                    .padding(.trailing, 45)
-                    .padding(.bottom, 40)
-                }
+//                .overlay(alignment: .bottomTrailing) {
+//                    Button {
+//                        
+//                    } label: {
+//                        Image(systemName: "square.and.pencil")
+//                            .font(.system(size: 28, weight: .medium))
+//                            .bold()
+//                            .foregroundColor(Color.accentColor)
+//                            .frame(width: 60, height: 60)
+//                            .background {
+//                                RoundedRectangle(cornerRadius: 15)
+//                                    .fill(Color.accentColor).opacity(0.4)
+//                            }
+//                            .shadow(radius: 15)
+//                            .onTapGesture {
+//                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+//                                impactMed.impactOccurred()
+//                                viewModel.showingNewItemView = true
+//                            }
+//                    }
+//                    .padding(.trailing, 45)
+//                    .padding(.bottom, 40)
+//                }
             }
             .ignoresSafeArea(.keyboard)
             .navigationTitle("Tarefas")
@@ -104,7 +104,7 @@ struct ToDoListView: View {
                 }
             }
             .toolbar {
-                ToolbarItem {
+                ToolbarItem(placement: .cancellationAction) {
                     Menu {
                         NavigationLink(destination: ProfileView()) {
                             HStack {
@@ -131,9 +131,20 @@ struct ToDoListView: View {
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle.fill")
-                            .font(.system(size: 17))
+                    }
+                }
+                
+                ToolbarItem {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "square.and.pencil")
                             .bold()
-                            .foregroundColor(Color.accentColor)
+                            .onTapGesture {
+                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                impactMed.impactOccurred()
+                                viewModel.showingNewItemView = true
+                            }
                     }
                 }
             }

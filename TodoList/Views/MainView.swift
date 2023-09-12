@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
-    @State private var selectedIndex = 0
     
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
@@ -21,7 +20,18 @@ struct MainView: View {
     
     @ViewBuilder
     var accountView: some View {
-        ToDoListView(userId: viewModel.currentUserId)
+        TabView {
+            ToDoListView(userId: viewModel.currentUserId)
+                .tabItem {
+                    Image(systemName: "checklist.rtl")
+                    Text("Tarefas")
+                }
+            TimerView()
+                .tabItem {
+                    Image(systemName: "stopwatch.fill")
+                    Text("Cronômetro")
+                }
+        }
     }
 }
 

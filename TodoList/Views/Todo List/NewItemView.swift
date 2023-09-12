@@ -50,6 +50,7 @@ struct NewItemView: View {
                 Alert(title: Text("Estranho...🤨"), message: Text("Acho que você esqueceu de descrever a tarefa, dê uma olhada!"))
             }
         }
+        .padding(.top, 30)
         .ignoresSafeArea(.keyboard)
     }
 }
