@@ -16,4 +16,4 @@ TooDo is a todo-list application in Swift using SwiftUI. This project leverages 
 ## Where I can get this app?
 <p>Link with apple store button</p>
 
-Made with ♥️ by Augusto Simionato 🚀
+Made with 💙 by Augusto Simionato 🚀
