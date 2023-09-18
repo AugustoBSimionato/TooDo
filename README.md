@@ -3,11 +3,14 @@
 </p>
 
 # TooDo - Todo-list App
-TooDo is a todo-list application in Swift using SwiftUI. This project leverages the MVVM architecture and use Firebase for saving and synchronizing data between devices like iPhone, iPad and soon to Macs.
+TooDo is a todo-list application in Swift using SwiftUI. This project leverages the MVVM architecture and use Firebase for saving and synchronizing data between devices like iPhone, iPad and soon to Mac and Apple Watch.
 
 ## Features
 
-- **Sync across devices**: In seconds your tasks are sync and available to all devices that are logged in
+- **Sync Across Devices:** Your tasks are synced and available on all logged-in devices in just seconds.
+- **Lightweight:** An app that helps you stay organized with the size of a PRO RAW photo 🌁
+- **Privacy is at the Core of the App:** We believe your privacy is more important than completing your tasks!
+- **Stay Up-to-Date with Apple's Latest Features:** Our app is fully compatible with the latest Apple platforms, including support for widgets on both home and lock screens. We harness the power of SwiftUI, the latest framework from Apple, to make our app even more robust.
 
 ## Where I can get this app?
 <p>Link with apple store button</p>
