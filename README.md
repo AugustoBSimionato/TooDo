@@ -10,7 +10,8 @@ TooDo is a todo-list application in Swift using SwiftUI. This project leverages 
 - **Sync Across Devices:** Your tasks are synced and available on all logged-in devices in just seconds.
 - **Lightweight:** An app that helps you stay organized and have the size of a PRO RAW photo 🌁
 - **Privacy is at the Core of the App:** We believe that your privacy is more important than helping you complete your tasks!
-- **Stay Up-to-Date with Apple's Latest Features:** Our app is fully compatible with the latest Apple platforms, including support for widgets on both home and lock screens. We harness the power of SwiftUI, the latest framework from Apple, to make our app even more robust.
+- **Track your tasks:** Know how much time you spend to complete your tasks.
+- **Stay Up-to-Date with Apple's Latest Features:** Our app is fully compatible with the latest Apple platforms, including support for widgets on both home and lock screens, and Live Activities. We harness the power of SwiftUI, the latest framework from Apple, to make our app even more robust.
 
 ## Where I can get this app?
 <p>Link with apple store button</p>
