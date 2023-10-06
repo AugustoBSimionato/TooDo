@@ -49,7 +49,9 @@ struct TimerView: View {
                         }
                     }
                 }
+                
                 Spacer()
+                
                 Button {
                     isTrackingTime.toggle()
                     if isTrackingTime {
@@ -71,35 +73,21 @@ struct TimerView: View {
                     }
                 } label: {
                     ZStack(alignment: .center) {
-                        Capsule()
+                        RoundedRectangle(cornerRadius: 10.0)
                             .foregroundColor(.accentColor)
-                            .frame(width: 120, height: 50)
+                            .frame(width: 180, height: 50)
                         
                         Text(isTrackingTime ? "Zerar" : "Começar")
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
-                            .frame(width: 200, height: 200)
+                            .font(.system(size: 18, weight: .semibold, design: .rounded))
+//                            .frame(width: 200, height: 200)
                             .foregroundColor(.white)
                     }
                 }
-                .navigationTitle("Cronômetro")
-                .navigationBarTitleDisplayMode(.inline)
+                
+                Spacer()
             }
-        }
-        .navigationTitle("Timer")
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.backward.circle.fill")
-                            .font(.system(size: 20))
-                            .foregroundColor(Color.accentColor)
-                            .bold()
-                    }
-                }
-            }
+            .navigationTitle("Cronômetro")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

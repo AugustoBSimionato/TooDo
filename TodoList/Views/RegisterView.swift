@@ -83,7 +83,7 @@ struct RegisterView: View {
                             Image(systemName: "lock.fill")
                                 .foregroundColor(.accentColor)
                             SecureField("Senha", text: $viewModel.password)
-                                .textContentType(.newPassword)
+                                .textContentType(.password)
                                 .accessibility(identifier: "campo senha")
                         }
                         .frame(width: 290, height: 50)

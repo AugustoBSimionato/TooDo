@@ -43,8 +43,10 @@
 		4E2ED9FE2AB0EDEA0076B174 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2ED9FD2AB0EDEA0076B174 /* TimerView.swift */; };
 		4E31CC252A5CA9A00071DB15 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31CC242A5CA9A00071DB15 /* TermsView.swift */; };
 		4E362E412A182E320018FEE2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E362E402A182E320018FEE2 /* Extensions.swift */; };
+		4E3C281C2ACF89BC00DC7C24 /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C281B2ACF89BC00DC7C24 /* SupportEmail.swift */; };
 		4E9AD5782A8569E400647011 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9AD5772A8569E400647011 /* ListView.swift */; };
 		4EA642272A5775DA00431A01 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA642262A5775DA00431A01 /* Launch Screen.storyboard */; };
+		4ECF7E592ACF65DF007811A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECF7E582ACF65DF007811A4 /* SettingsView.swift */; };
 		4EFEE1762A7928410072C018 /* FeaturesBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFEE1752A7928410072C018 /* FeaturesBoardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,9 +109,11 @@
 		4E2ED9FD2AB0EDEA0076B174 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		4E31CC242A5CA9A00071DB15 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		4E362E402A182E320018FEE2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4E3C281B2ACF89BC00DC7C24 /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
 		4E8CF0422A44D6000007CE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E9AD5772A8569E400647011 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		4EA642262A5775DA00431A01 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4ECF7E582ACF65DF007811A4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4EFEE1752A7928410072C018 /* FeaturesBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +220,7 @@
 				4E31CC242A5CA9A00071DB15 /* TermsView.swift */,
 				4EFEE1752A7928410072C018 /* FeaturesBoardView.swift */,
 				4E2ED9FD2AB0EDEA0076B174 /* TimerView.swift */,
+				4ECF7E582ACF65DF007811A4 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			children = (
 				4E2548B12A17B954008F7E9B /* User.swift */,
 				4E2548B32A17B960008F7E9B /* ToDoListItem.swift */,
+				4E3C281B2ACF89BC00DC7C24 /* SupportEmail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 				4E2548B82A17BA8E008F7E9B /* ProfileViewViewModel.swift in Sources */,
 				4E2548A62A17B73C008F7E9B /* ProfileView.swift in Sources */,
 				4E2ED9FE2AB0EDEA0076B174 /* TimerView.swift in Sources */,
+				4E3C281C2ACF89BC00DC7C24 /* SupportEmail.swift in Sources */,
 				4E2548B22A17B954008F7E9B /* User.swift in Sources */,
 				4E2548B02A17B909008F7E9B /* ToDoListItemView.swift in Sources */,
 				4E2548BA2A17BAB0008F7E9B /* ToDoListViewViewModel.swift in Sources */,
@@ -405,6 +412,7 @@
 				4E2548AA2A17B8A9008F7E9B /* NewItemView.swift in Sources */,
 				4E2548BC2A17BACA008F7E9B /* NewItemViewViewModel.swift in Sources */,
 				4E2548C22A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift in Sources */,
+				4ECF7E592ACF65DF007811A4 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

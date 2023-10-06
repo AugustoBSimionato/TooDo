@@ -89,6 +89,7 @@ struct TermsView: View {
             }
         }
         .navigationTitle("Termos e Condições de Uso")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

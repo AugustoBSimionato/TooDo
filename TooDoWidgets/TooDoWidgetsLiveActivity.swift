@@ -24,8 +24,6 @@ struct TooDoWidgetsLiveActivity: Widget {
             HStack(spacing: 40) {
                 Text("Tempo gasto na tarefa")
                     .font(.system(size: 18, weight: .bold, design: .rounded))
-                
-                Spacer()
                     
                 Text(context.state.startTime, style: .timer)
                     .font(.system(size: 30, weight: .bold, design: .rounded))
@@ -61,9 +59,8 @@ struct TooDoWidgetsLiveActivity: Widget {
                     .frame(width: 120)
                 }
             } compactLeading: {
-                Image(systemName: "deskclock.fill")
+                Image(systemName: "stopwatch.fill")
                     .font(.system(size: 15))
-                    .frame(width: 35)
                     .foregroundStyle(Color.accentColor)
             } compactTrailing: {
                 Text(context.state.startTime, style: .timer)
@@ -71,7 +68,9 @@ struct TooDoWidgetsLiveActivity: Widget {
                     .frame(width: 40)
                     .foregroundColor(.accentColor)
             } minimal: {
-                Image(systemName: "deskclock.fill")
+                Image(systemName: "stopwatch.fill")
+                    .font(.system(size: 15))
+                    .frame(width: 25)
                     .foregroundColor(.accentColor)
             }
         }

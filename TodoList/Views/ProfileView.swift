@@ -103,7 +103,6 @@ func profileView(user: User) -> some View {
             }
         }
     }
-    .navigationTitle("Perfil")
 }
 
 struct ProfileView_Previews: PreviewProvider {

@@ -47,7 +47,7 @@ struct NewItemView: View {
             }
             .padding(.bottom, 40)
             .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text("Estranho...🤨"), message: Text("Acho que você esqueceu de descrever a tarefa, dê uma olhada!"))
+                Alert(title: Text("Estranho...🤨"), message: Text("Acho que você esqueceu de descrever a tarefa, da uma olhada!"))
             }
         }
         .padding(.top, 30)
