@@ -88,7 +88,7 @@ struct TermsView: View {
                 .padding()
             }
         }
-        .navigationTitle("Termos e Condições de Uso")
+        .navigationTitle("Termos-e-Condições-de-Uso")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar {

@@ -22,7 +22,7 @@ struct TooDoWidgetsLiveActivity: Widget {
         ActivityConfiguration(for: TooDoWidgetsAttributes.self) { context in
             // Lock screen/banner UI goes here
             HStack(spacing: 40) {
-                Text("Tempo gasto na tarefa")
+                Text("Tempo-gasto-na-tarefa")
                     .font(.system(size: 18, weight: .bold, design: .rounded))
                     
                 Text(context.state.startTime, style: .timer)
@@ -36,8 +36,8 @@ struct TooDoWidgetsLiveActivity: Widget {
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
                     HStack {
-                        Text("Tempo decorrido")
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                        Text("Tempo-gasto-na-tarefa")
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
                     }
                     .frame(width: 120)

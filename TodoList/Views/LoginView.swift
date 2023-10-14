@@ -23,12 +23,12 @@ struct LoginView: View {
                     Spacer()
                     VStack {
                         VStack(alignment: .leading) {
-                            Text("Olá! 👋")
+                            Text("olá!👋")
                                 .font(.system(size: 35, weight: .bold, design: .rounded))
                                 .foregroundColor(.accentColor)
                                 .padding(.bottom, 1)
                             
-                            Text("Faça login para continuar!")
+                            Text("faça-login-para-continuar!")
                                 .font(.system(size: 17, weight: .semibold,design: .rounded))
                         }
                         .padding(.bottom, 80)
@@ -65,7 +65,7 @@ struct LoginView: View {
                             HStack {
                                 Image(systemName: "lock.fill")
                                     .foregroundColor(.accentColor)
-                                SecureField("Senha", text: $viewModel.password)
+                                SecureField("senha", text: $viewModel.password)
                                     .textContentType(.password)
                             }
                             .frame(width: 290, height: 50)
@@ -98,7 +98,7 @@ struct LoginView: View {
                                     }
                                 }
                             } label: {
-                                Text("Entrar")
+                                Text("entrar")
                                     .foregroundColor(.white)
                                     .font(.system(size: 18, weight: .semibold, design: .rounded))
                             }
@@ -110,13 +110,13 @@ struct LoginView: View {
                     Spacer()
                     
                     VStack {
-                        Text("Primeira vez aqui?")
+                        Text("primeira-vez-aqui?")
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                             .padding(.bottom, 2)
                         NavigationLink {
                             RegisterView()
                         } label: {
-                            Text("Crie uma conta")
+                            Text("crie-uma-conta")
                                 .font(.system(size: 16, weight: .bold, design: .rounded))
                                 .foregroundColor(Color.accentColor)
                         }

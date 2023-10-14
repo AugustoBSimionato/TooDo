@@ -19,12 +19,12 @@ struct RegisterView: View {
                 
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("Que bom te ver aqui 🤩")
+                        Text("que-bom-te-ver-aqui-🤩")
                             .font(.system(size: 27, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
                             .padding(.bottom, 1)
                         
-                        Text("Crie sua conta!")
+                        Text("crie-sua-conta!")
                             .font(.system(size: 17, weight: .semibold,design: .rounded))
                     }
                     .padding(.bottom, 50)
@@ -41,7 +41,7 @@ struct RegisterView: View {
                         HStack {
                             Image(systemName: "person.fill")
                                 .foregroundColor(.accentColor)
-                            TextField("Nome", text: $viewModel.name)
+                            TextField("nome", text: $viewModel.name)
                                 .textContentType(.username)
                                 .accessibility(identifier: "campo nome")
                         }
@@ -82,7 +82,7 @@ struct RegisterView: View {
                         HStack {
                             Image(systemName: "lock.fill")
                                 .foregroundColor(.accentColor)
-                            SecureField("Senha", text: $viewModel.password)
+                            SecureField("senha", text: $viewModel.password)
                                 .textContentType(.password)
                                 .accessibility(identifier: "campo senha")
                         }
@@ -102,7 +102,7 @@ struct RegisterView: View {
                     NavigationLink {
                         TermsView()
                     } label: {
-                        Text("Ao criar uma conta você concorda com os **Termos e Condições de Uso**")
+                        Text("ao-criar-uma-conta-você-concorda-com-os-**Termos-e-Condições-de-Uso**")
                             .multilineTextAlignment(.center)
                             .frame(width: 240)
                             .font(.callout)
@@ -119,7 +119,7 @@ struct RegisterView: View {
                         Button {
                             viewModel.register()
                         } label: {
-                            Text("Criar conta")
+                            Text("criar-conta")
                                 .foregroundColor(.white)
                                 .font(.system(size: 18, weight: .semibold, design: .rounded))
                         }

@@ -30,7 +30,7 @@ struct SettingsView: View {
                                     .font(.system(size: 14))
                                     .foregroundStyle(.white)
                             }
-                            Text("Perfil")
+                            Text("perfil")
                                 .font(.system(size: 15, weight: .medium, design: .rounded))
                         }
                     }
@@ -45,7 +45,7 @@ struct SettingsView: View {
                                     .font(.system(size: 14))
                                     .foregroundStyle(.white)
                             }
-                            Text("Termos e Condições de Uso")
+                            Text("Termos-e-Condições-de-Uso")
                                 .font(.system(size: 15, weight: .medium, design: .rounded))
                         }
                     }
@@ -63,13 +63,13 @@ struct SettingsView: View {
                                     .font(.system(size: 13))
                                     .foregroundStyle(.white)
                             }
-                            Text("Sair")
+                            Text("sair")
                                 .font(.system(size: 15, weight: .medium, design: .rounded))
                                 .foregroundStyle(.red)
                         }
                     }
                 } header: {
-                    Text("Conta")
+                    Text("conta")
                 }
                 
                 Section {
@@ -83,7 +83,7 @@ struct SettingsView: View {
                                 .font(.system(size: 14))
                                 .foregroundStyle(.white)
                         }
-                        Text("Avalie o TooDo")
+                        Text("Avalie-o-TooDo")
                             .font(.system(size: 15, weight: .medium, design: .rounded))
                     }
                     
@@ -97,11 +97,12 @@ struct SettingsView: View {
                                 .font(.system(size: 14))
                                 .foregroundStyle(.white)
                         }
-                        ShareLink(item: URL(string: "https://augustobsimionato.github.io/toodo-website/")!, message: Text("Suas tarefas concluídas de forma rápida e fácil! Baixe já!")) {
-                            Text("Compartilhar o TooDo")
+                        ShareLink(item: URL(string: "https://augustobsimionato.github.io/toodo-website/")!, message: Text("Suas-tarefas-concluídas-de-forma-rápida-e-fácil!-Baixe-já!")) {
+                            Text("Compartilhar-o-TooDo")
                                 .foregroundStyle(.blue)
                                 .font(.system(size: 15, weight: .medium, design: .rounded))
                         }
+                        
                     }
                     
                     HStack {
@@ -117,15 +118,15 @@ struct SettingsView: View {
                         Button {
                             email.send(openURL: openURL)
                         } label: {
-                            Text("Enviar Feedback")
+                            Text("Enviar-Feedback")
                                 .foregroundStyle(.blue)
                                 .font(.system(size: 15, weight: .medium, design: .rounded))
                         }
                     }
                 } header: {
-                    Text("Feedback e compartilhamento")
+                    Text("Feedback-e-compartilhamento")
                 } footer: {
-                    Text("Teve alguma ideia ou encontrou problema? Conte como está sendo sua experiência com o TooDo e o que poderia ser melhorado!")
+                    Text("Teve-alguma-ideia-ou-encontrou-um-problema?-Conte-como-está-sendo-sua-experiência-com-o-TooDo-e-o-que-poderia-ser-melhorado!")
                 }
 
                 
@@ -140,7 +141,7 @@ struct SettingsView: View {
                                 .font(.system(size: 14))
                                 .foregroundStyle(.white)
                         }
-                        Text("Versão do App")
+                        Text("Versão-do-App")
                             .font(.system(size: 15, weight: .medium, design: .rounded))
                         Spacer()
                         Text("1.0")
@@ -153,10 +154,11 @@ struct SettingsView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundStyle(connectionStatus == .satisfied ? .green : .red)
                             
-                            Image(systemName: connectionStatus == .satisfied ? "checkmark.icloud.fill" : "exclamationmark.arrow.triangle.2.circlepath")
+                            Image(systemName: connectionStatus == .satisfied ? "cloud.fill" : "exclamationmark.arrow.triangle.2.circlepath")
                                 .foregroundStyle(.white)
+                                .symbolEffect(.pulse, options: .repeating, value: connectionStatus)
                         }
-                        Text(connectionStatus == .satisfied ? "Tudo sincronizado 🤩" : "Falha ao sincronizar tarefas")
+                        Text(connectionStatus == .satisfied ? "Tudo-sincronizado-🤩" : "Sem-internet-para-sincronizar")
                             .font(.system(size: 15, weight: .medium, design: .rounded))
                     }
                     .onAppear {
@@ -170,12 +172,12 @@ struct SettingsView: View {
                         monitor.start(queue: queue)
                     }
                 } header: {
-                    Text("Informações adicionais")
+                    Text("Informações-adicionais")
                 } footer: {
-                    Text("Informações úteis para diagnóstico do app.")
+                    Text("Informações-úteis-para-diagnóstico-do-app.")
                 }
             }
-            .navigationTitle("Configurações")
+            .navigationTitle("configurações")
         }
     }
 }

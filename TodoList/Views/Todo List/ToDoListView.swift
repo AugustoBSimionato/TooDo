@@ -52,8 +52,21 @@ struct ToDoListView: View {
                                 viewModel.delete(id: item.id)
                             } label: {
                                 HStack {
-                                    Text("Apagar tarefa")
+                                    Text("apagar-tarefa")
                                     Image(systemName: "trash.fill")
+                                }
+                            }
+                            .onLongPressGesture {
+                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                impactMed.impactOccurred()
+                            }
+                            
+                            Button {
+                                
+                            } label: {
+                                HStack {
+                                    Text("editar-tarefa")
+                                    Image(systemName: "square.and.pencil")
                                 }
                             }
                             .onLongPressGesture {
@@ -63,10 +76,10 @@ struct ToDoListView: View {
                         }
                 }
                 .listStyle(.sidebar)
-                .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Buscar tarefa")
+                .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "buscar-tarefas")
             }
             .ignoresSafeArea(.keyboard)
-            .navigationTitle("Tarefas")
+            .navigationTitle("tarefas")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $viewModel.showingNewItemView) {
                 NavigationStack {
@@ -76,14 +89,14 @@ struct ToDoListView: View {
                                 Button {
                                     viewModel.showingNewItemView = false
                                 } label: {
-                                    Text("Voltar")
+                                    Text("voltar")
                                         .font(.system(size: 16, weight: .medium, design: .rounded))
                                 }
 
                             }
                             
                             ToolbarItem(placement: .principal) {
-                                Text("Nova tarefa")
+                                Text("nova-tarefa")
                                     .font(.system(size: 18, weight: .semibold, design: .rounded))
                             }
                         }
@@ -108,8 +121,11 @@ struct ToDoListView: View {
     }
 }
 
-struct ToDoListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ToDoListView(userId: "odW3M0pBqYb2tY4tLzJlum3nzK83")
-    }
+#Preview("English") {
+    ToDoListView(userId: "odW3M0pBqYb2tY4tLzJlum3nzK83")
+}
+
+#Preview("Portuguese-BR") {
+    ToDoListView(userId: "odW3M0pBqYb2tY4tLzJlum3nzK83")
+        .environment(\.locale, Locale(identifier: "pt-br"))
 }

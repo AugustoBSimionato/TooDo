@@ -20,9 +20,9 @@ struct ProfileView: View {
                 if let user = viewModel.user {
                     profileView(user: user)
                 } else {
-                    ProgressView()
-                    Text("Carregando perfil...")
-                        .padding()
+                    ProgressView {
+                        Text("carregando-perfil...")
+                    }
                 }
             }
             .opacity(isAnimating ? 1 : 0)
@@ -32,6 +32,8 @@ struct ProfileView: View {
                 }
             }
         }
+        .navigationTitle("perfil")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             viewModel.fetchUser()
         }

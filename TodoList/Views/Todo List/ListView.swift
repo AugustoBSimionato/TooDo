@@ -49,7 +49,7 @@ struct ListView: View {
                     }
             }
             .listStyle(.sidebar)
-            .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Buscar tarefa")
+            .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "buscar-tarefa")
             .overlay(alignment: .bottomTrailing) {
                 Button {
                     viewModel.showingNewItemView = true
@@ -69,7 +69,7 @@ struct ListView: View {
                 .padding(.bottom, 40)
             }
         }
-        .navigationTitle("Tarefas")
+        .navigationTitle("tarefas")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $viewModel.showingNewItemView) {
             NewItemView(newItemPresented: $viewModel.showingNewItemView)
@@ -80,6 +80,5 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView(userId: "odW3M0pBqYb2tY4tLzJlum3nzK83")
-//            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

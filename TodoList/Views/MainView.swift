@@ -24,17 +24,17 @@ struct MainView: View {
             ToDoListView(userId: viewModel.currentUserId)
                 .tabItem {
                     Image(systemName: "list.bullet.rectangle.portrait.fill")
-                    Text("Tarefas")
+                    Text("tarefas")
                 }
             TimerView()
                 .tabItem {
                     Image(systemName: "stopwatch.fill")
-                    Text("Cronômetro")
+                    Text("cronômetro")
                 }
             SettingsView()
                 .tabItem {
                     Image(systemName: "gearshape.fill")
-                    Text("Configurações")
+                    Text("configurações")
                 }
         }
     }

@@ -31,10 +31,13 @@ struct ToDoListItemView: View {
             
             Button {
                 viewModel.toggleIsDone(item: item)
+                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                impactMed.impactOccurred()
             } label: {
                 Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-                    .font(.system(size: 16))
+                    .font(.system(size: 18))
                     .foregroundColor(.accentColor)
+                    .symbolEffect(.bounce, value: item.isDone)
             }
         }
         .padding(8)

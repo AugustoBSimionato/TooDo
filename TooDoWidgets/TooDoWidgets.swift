@@ -52,7 +52,7 @@ struct TooDoWidgetsEntryView : View {
                         .font(.system(size: 35))
                         .padding(.bottom)
                     
-                    Text("Acessar tarefas")
+                    Text("Acessar-tarefas")
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.white)
                         .font(.system(size: 17, weight: .semibold, design: .rounded))
@@ -105,8 +105,8 @@ struct TooDoWidgets: Widget {
             }
         }
         .supportedFamilies([.systemSmall, .accessoryCircular, .accessoryInline])
-        .configurationDisplayName("Lista de tarefas do TooDo")
-        .description("Acesse sua lista de tarefas de forma rápida na home ou lock screen!")
+        .configurationDisplayName("Lista-de-tarefas-do-TooDo")
+        .description("Acesse-sua-lista-de-tarefas-de-forma-rápida-na-home-ou-lock-screen!")
     }
 }
 

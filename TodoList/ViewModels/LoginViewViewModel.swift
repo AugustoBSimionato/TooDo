@@ -22,7 +22,23 @@ class LoginViewViewModel: ObservableObject {
             return
         }
         
-        Auth.auth().signIn(withEmail: email, password: password)
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                let nsError = error as NSError
+                switch nsError.code {
+                case AuthErrorCode.wrongPassword.rawValue:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "wrong password"
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "error login"
+                    }
+                }
+            } else {
+                // Usuário logado com sucesso
+            }
+        }
     }
     
     private func validate() -> Bool {
@@ -32,14 +48,14 @@ class LoginViewViewModel: ObservableObject {
         
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty, !password.trimmingCharacters(in: .whitespaces).isEmpty else {
             DispatchQueue.main.async {
-                self.errorMessage = "Email ou senha incorretos"
+                self.errorMessage = "empty fields"
             }
             return false
         }
         
         guard email.contains("@") && email.contains(".") else {
             DispatchQueue.main.async {
-                self.errorMessage = "Acho que faltou um @ ou um . no email"
+                self.errorMessage = "@ or . is missing"
             }
             return false
         }

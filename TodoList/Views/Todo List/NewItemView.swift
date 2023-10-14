@@ -16,7 +16,7 @@ struct NewItemView: View {
     var body: some View {
         VStack {
             Form {
-                TextField("Descreva a tarefa...", text: $viewModel.title)
+                TextField("descreva-a-tarefa...", text: $viewModel.title)
                 DatePicker("", selection: $viewModel.dueDate, in: Date()...)
                     .datePickerStyle(.graphical)
             }
@@ -34,20 +34,23 @@ struct NewItemView: View {
                 Button {
                     if viewModel.canSave {
                         viewModel.save()
-                        notify.sendScheduleNotification(date: viewModel.dueDate, title: "Já finalizou essa tarefa? 🤔", body: viewModel.title)
+                        notify.sendScheduleNotification(date: viewModel.dueDate, title: "já-finalizou-essa-tarefa?-🤔", body: viewModel.title)
                         newItemPresented = false
+                        
+                        let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                        impactMed.impactOccurred()
                     } else {
                         viewModel.showAlert = true
                     }
                 } label: {
-                    Text("Adicionar")
+                    Text("adicionar")
                         .foregroundColor(.white)
                         .font(.system(size: 18, weight: .semibold, design: .rounded))
                 }
             }
             .padding(.bottom, 40)
             .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text("Estranho...🤨"), message: Text("Acho que você esqueceu de descrever a tarefa, da uma olhada!"))
+                Alert(title: Text("estranho...🤨"), message: Text("acho-que-você-esqueceu-de-descrever-a-tarefa,da-uma-olhada!"))
             }
         }
         .padding(.top, 30)

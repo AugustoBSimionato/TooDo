@@ -61,6 +61,9 @@ struct TimerView: View {
                         let state = TooDoWidgetsAttributes.ContentState(startTime: .now)
                         
                         activity = try? Activity<TooDoWidgetsAttributes>.request(attributes: attributes, contentState: state, pushType: nil)
+                        
+                        let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                        impactMed.impactOccurred()
                     } else {
                         guard let startTime else { return }
                         let state = TooDoWidgetsAttributes.ContentState(startTime: startTime)
@@ -70,6 +73,9 @@ struct TimerView: View {
                         }
                         
                         self.startTime = nil
+                        
+                        let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                        impactMed.impactOccurred()
                     }
                 } label: {
                     ZStack(alignment: .center) {
@@ -77,16 +83,15 @@ struct TimerView: View {
                             .foregroundColor(.accentColor)
                             .frame(width: 180, height: 50)
                         
-                        Text(isTrackingTime ? "Zerar" : "Começar")
+                        Text(isTrackingTime ? "zerar" : "começar")
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
-//                            .frame(width: 200, height: 200)
                             .foregroundColor(.white)
                     }
                 }
                 
                 Spacer()
             }
-            .navigationTitle("Cronômetro")
+            .navigationTitle("cronômetro")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
