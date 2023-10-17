@@ -33,50 +33,62 @@ struct ToDoListView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                List(filteredTasks) { item in
-                    ToDoListItemView(item: item)
-                        .swipeActions {
-                            Button {
-                                viewModel.delete(id: item.id)
-                            } label: {
-                                Image(systemName: "trash.fill")
-                            }
-                            .tint(.red)
-                            .onTapGesture {
-                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                                impactMed.impactOccurred()
-                            }
-                        }
-                        .contextMenu {
-                            Button(role: .destructive) {
-                                viewModel.delete(id: item.id)
-                            } label: {
-                                HStack {
-                                    Text("apagar-tarefa")
+                if items.isEmpty {
+                    EmptyTasksView()
+                } else {
+                    List(filteredTasks) { item in
+                        ToDoListItemView(item: item)
+                            .swipeActions {
+                                Button {
+                                    viewModel.delete(id: item.id)
+                                } label: {
                                     Image(systemName: "trash.fill")
                                 }
-                            }
-                            .onLongPressGesture {
-                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                                impactMed.impactOccurred()
-                            }
-                            
-                            Button {
-                                
-                            } label: {
-                                HStack {
-                                    Text("editar-tarefa")
-                                    Image(systemName: "square.and.pencil")
+                                .tint(.red)
+                                .onTapGesture {
+                                    let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                    impactMed.impactOccurred()
                                 }
                             }
-                            .onLongPressGesture {
-                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                                impactMed.impactOccurred()
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    viewModel.delete(id: item.id)
+                                } label: {
+                                    HStack {
+                                        Text("apagar-tarefa")
+                                        Image(systemName: "trash.fill")
+                                    }
+                                }
+                                .onLongPressGesture {
+                                    let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                    impactMed.impactOccurred()
+                                }
+                                
+                                Button {
+                                    
+                                } label: {
+                                    HStack {
+                                        Text("editar-tarefa")
+                                        Image(systemName: "square.and.pencil")
+                                    }
+                                }
+                                .onLongPressGesture {
+                                    let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                    impactMed.impactOccurred()
+                                }
                             }
+                    }
+                    .refreshable {
+                        
+                    }
+                    .listStyle(.sidebar)
+                    .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "buscar-tarefas")
+                    .overlay {
+                        if filteredTasks.isEmpty {
+                            ContentUnavailableView.search
                         }
+                    }
                 }
-                .listStyle(.sidebar)
-                .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "buscar-tarefas")
             }
             .ignoresSafeArea(.keyboard)
             .navigationTitle("tarefas")
