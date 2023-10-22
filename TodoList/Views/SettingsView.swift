@@ -97,12 +97,11 @@ struct SettingsView: View {
                                 .font(.system(size: 14))
                                 .foregroundStyle(.white)
                         }
-                        ShareLink(item: URL(string: "https://augustobsimionato.github.io/toodo-website/")!, message: Text("Suas-tarefas-concluídas-de-forma-rápida-e-fácil!-Baixe-já!")) {
+                        ShareLink(item: URL(string: "https://toodo-suas-tarefas-concluidas-de-forma.webflow.io/")!, message: Text("Suas-tarefas-concluídas-de-forma-rápida-e-fácil!-Baixe-já!")) {
                             Text("Compartilhar-o-TooDo")
                                 .foregroundStyle(.blue)
                                 .font(.system(size: 15, weight: .medium, design: .rounded))
                         }
-                        
                     }
                     
                     HStack {
