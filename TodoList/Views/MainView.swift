@@ -21,21 +21,29 @@ struct MainView: View {
     @ViewBuilder
     var accountView: some View {
         TabView {
-            ToDoListView(userId: viewModel.currentUserId)
-                .tabItem {
-                    Image(systemName: "list.bullet.rectangle.portrait.fill")
-                    Text("tarefas")
-                }
-            TimerView()
-                .tabItem {
-                    Image(systemName: "stopwatch.fill")
-                    Text("cronômetro")
-                }
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gearshape.fill")
-                    Text("configurações")
-                }
+            NavigationStack {
+                ToDoListView(userId: viewModel.currentUserId)
+            }
+            .tabItem {
+                Image(systemName: "list.bullet.rectangle.portrait.fill")
+                Text("tarefas")
+            }
+            
+            NavigationStack {
+                TimerView()
+            }
+            .tabItem {
+                Image(systemName: "stopwatch.fill")
+                Text("cronômetro")
+            }
+            
+            NavigationStack {
+                SettingsView()
+            }
+            .tabItem {
+                Image(systemName: "gearshape.fill")
+                Text("configurações")
+            }
         }
     }
 }

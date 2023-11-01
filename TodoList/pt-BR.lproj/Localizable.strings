@@ -52,5 +52,8 @@
 "Acesse-sua-lista-de-tarefas-de-forma-rápida-na-home-ou-lock-screen!" = "Acesse sua lista de tarefas de forma rápida na home ou lock screen!";
 "Tempo-gasto-na-tarefa" = "Tempo gasto na tarefa";
 "editar-tarefa" = "Editar tarefa";
-"empty-list" = "Lista vazia!";
-"description" = "Bora organizar a vida?!";
+"empty-list" = "Lista vazia";
+"description" = "Toque no";
+"description2" = "para adicionar uma nova tarefa";
+"title-tip" = "Vamos começar!";
+"message-tip" = "Toque no botão de adicionar para criar uma nova tarefa";

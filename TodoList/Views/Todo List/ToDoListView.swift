@@ -7,6 +7,12 @@
 
 import SwiftUI
 import FirebaseFirestoreSwift
+import TipKit
+
+struct addTaskTip: Tip {
+    var title: Text = Text("title-tip")
+    var message: Text? = Text("message-tip")
+}
 
 struct ToDoListView: View {
     @StateObject var viewModel: ToDoListViewViewModel
@@ -127,6 +133,7 @@ struct ToDoListView: View {
                                 viewModel.showingNewItemView = true
                             }
                     }
+                    .popoverTip(addTaskTip())
                 }
             }
         }
