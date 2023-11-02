@@ -6,6 +6,13 @@
 //
 
 import SwiftUI
+import TipKit
+
+struct reminderDateTip: Tip {
+    var title: Text = Text("Criando uma nova tarefa")
+    var message: Text? = Text("Adicione uma descrição simples e uma data e hora para ser lembrado sobre essa tarefa")
+    var image: Image? = Image(systemName: "calendar.badge.clock")
+}
 
 struct NewItemView: View {
     @StateObject var viewModel = NewItemViewViewModel()
@@ -19,6 +26,7 @@ struct NewItemView: View {
                 TextField("descreva-a-tarefa...", text: $viewModel.title)
                 DatePicker("", selection: $viewModel.dueDate, in: Date()...)
                     .datePickerStyle(.graphical)
+                    .popoverTip(reminderDateTip())
             }
             .shadow(radius: 5)
             .scrollDisabled(true)

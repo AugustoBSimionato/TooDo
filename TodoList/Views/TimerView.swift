@@ -7,6 +7,12 @@
 
 import SwiftUI
 import ActivityKit
+import TipKit
+
+struct timerTip: Tip {
+    var title: Text = Text("Track the time spent on your tasks")
+    var message: Text? = Text("Start a timer and it follows you wherever you go on the iphone!")
+}
 
 struct TimerView: View {
     @State private var isTrackingTime: Bool = false
@@ -88,6 +94,7 @@ struct TimerView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .popoverTip(timerTip())
                 
                 Spacer()
             }

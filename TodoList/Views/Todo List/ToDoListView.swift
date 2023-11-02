@@ -12,6 +12,7 @@ import TipKit
 struct addTaskTip: Tip {
     var title: Text = Text("title-tip")
     var message: Text? = Text("message-tip")
+    var image: Image? = Image(systemName: "sparkles")
 }
 
 struct ToDoListView: View {
@@ -63,19 +64,6 @@ struct ToDoListView: View {
                                     HStack {
                                         Text("apagar-tarefa")
                                         Image(systemName: "trash.fill")
-                                    }
-                                }
-                                .onLongPressGesture {
-                                    let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                                    impactMed.impactOccurred()
-                                }
-                                
-                                Button {
-                                    
-                                } label: {
-                                    HStack {
-                                        Text("editar-tarefa")
-                                        Image(systemName: "square.and.pencil")
                                     }
                                 }
                                 .onLongPressGesture {
