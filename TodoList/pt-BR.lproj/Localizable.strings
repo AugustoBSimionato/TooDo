@@ -41,7 +41,7 @@
 "Informações-adicionais" = "Informações adicionais";
 "Informações-úteis-para-diagnóstico-do-app." = "Informações úteis para diagnóstico do app.";
 "Arraste-para-continuar" = "Arraste para continuar";
-"Suas-tarefas-salvas-na-nuvem!" = "Suas tarefas salvas na nuvem!";
+"Suas-tarefas-salvas-na-nuvem!" = "Sempre atualizado!";
 "descricao1" = "Em-segundos suas tarefas são sincronizadas para que você consiga anotar no iPhone e marcar como concluída no iPad!";
 "Sua-privacidade-em-1°-lugar!" = "Sua privacidade em 1° lugar!";
 "descricao2" = "Você só consegue acessar suas tarefas se estiver com a biometria ativa no seu iPhone ou iPad, senão não rola!";
@@ -57,3 +57,7 @@
 "description2" = "para adicionar uma nova tarefa";
 "title-tip" = "Vamos começar!";
 "message-tip" = "Toque no botão de adicionar para criar uma nova tarefa";
+"title-tip2" = "Criando uma tarefa";
+"message-tip2" = "Adicione uma descrição simples e uma data e hora para ser lembrado sobre essa tarefa";
+"title-tip3" = "Descubra quanto tempo você gasta nas suas tarefas";
+"message-tip3" = "Inicie o cronômetro e ele sempre te seguirá mesmo se você sair do aplicativo bloquer a tela";

@@ -10,8 +10,9 @@ import ActivityKit
 import TipKit
 
 struct timerTip: Tip {
-    var title: Text = Text("Track the time spent on your tasks")
-    var message: Text? = Text("Start a timer and it follows you wherever you go on the iphone!")
+    var title: Text = Text("title-tip3")
+    var message: Text? = Text("message-tip3")
+    var image: Image? = Image(systemName: "stopwatch.fill")
 }
 
 struct TimerView: View {

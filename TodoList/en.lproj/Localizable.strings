@@ -41,7 +41,7 @@
 "Informações-adicionais" = "Additional Information";
 "Informações-úteis-para-diagnóstico-do-app." = "Useful information for app diagnosis.";
 "Arraste-para-continuar" = "Drag to continue";
-"Suas-tarefas-salvas-na-nuvem!" = "Your tasks saved in the cloud!";
+"Suas-tarefas-salvas-na-nuvem!" = "Always synced!";
 "descricao1" = "In seconds your tasks are synchronized so you can write them down on your iPhone and mark them as completed on your iPad!";
 "Sua-privacidade-em-1°-lugar!" = "Your privacy comes first!";
 "descricao2" = "You can only access your tasks if you have biometrics activated on your iPhone or iPad, otherwise it won't work!";
@@ -57,3 +57,7 @@
 "description2" = "to add a new task";
 "title-tip" = "Lets start!";
 "message-tip" = "Tap the plus button to add a new task";
+"title-tip2" = "Creating a new task";
+"message-tip2" = "Add a simple description and a date and time to be reminded about this task";
+"title-tip3" = "Find out how much time you spent in your tasks";
+"message-tip3" = "Start a stopwatch and it follows you wherever you go on the iphone!";

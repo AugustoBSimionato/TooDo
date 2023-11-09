@@ -60,12 +60,13 @@ struct TooDoWidgetsLiveActivity: Widget {
                 }
             } compactLeading: {
                 Image(systemName: "stopwatch.fill")
-                    .font(.system(size: 15))
+                    .font(.system(size: 17))
                     .foregroundStyle(Color.accentColor)
+                    .frame(width: 35)
             } compactTrailing: {
                 Text(context.state.startTime, style: .timer)
                     .bold()
-                    .frame(width: 40)
+                    .frame(width: 35)
                     .foregroundColor(.accentColor)
             } minimal: {
                 Image(systemName: "stopwatch.fill")

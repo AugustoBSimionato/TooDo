@@ -9,8 +9,8 @@ import SwiftUI
 import TipKit
 
 struct reminderDateTip: Tip {
-    var title: Text = Text("Criando uma nova tarefa")
-    var message: Text? = Text("Adicione uma descrição simples e uma data e hora para ser lembrado sobre essa tarefa")
+    var title: Text = Text("title-tip2")
+    var message: Text? = Text("message-tip2")
     var image: Image? = Image(systemName: "calendar.badge.clock")
 }
 
