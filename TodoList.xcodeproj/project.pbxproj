@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E027E022AFDE5FF00F20456 /* WidgetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E027E012AFDE5FF00F20456 /* WidgetsView.swift */; };
 		4E0B841F2A55ED68000B8A06 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B841E2A55ED68000B8A06 /* NotificationHandler.swift */; };
 		4E236AC62AFD64440080BE68 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E236AC52AFD64440080BE68 /* PrivacyView.swift */; };
 		4E236AC82AFD675E0080BE68 /* SecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E236AC72AFD675D0080BE68 /* SecurityView.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E027E012AFDE5FF00F20456 /* WidgetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsView.swift; sourceTree = "<group>"; };
 		4E0B841E2A55ED68000B8A06 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		4E2323B72A1EC02C009B1833 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4E236AC52AFD64440080BE68 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
@@ -292,9 +294,10 @@
 			isa = PBXGroup;
 			children = (
 				4ECE4E732AFD235900E6C7F0 /* AlwaysSyncedView.swift */,
-				4E236AC52AFD64440080BE68 /* PrivacyView.swift */,
+				4E027E012AFDE5FF00F20456 /* WidgetsView.swift */,
 				4E236AC72AFD675D0080BE68 /* SecurityView.swift */,
 				4E236AC92AFD69880080BE68 /* NotificationAlertView.swift */,
+				4E236AC52AFD64440080BE68 /* PrivacyView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -351,7 +354,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					4E2548862A17AEC3008F7E9B = {
 						CreatedOnToolsVersion = 14.3;
@@ -443,6 +446,7 @@
 				4E2548BC2A17BACA008F7E9B /* NewItemViewViewModel.swift in Sources */,
 				4E2548C22A17BB0C008F7E9B /* ToDoListItemViewViewModel.swift in Sources */,
 				4ECF7E592ACF65DF007811A4 /* SettingsView.swift in Sources */,
+				4E027E022AFDE5FF00F20456 /* WidgetsView.swift in Sources */,
 				4E236AC62AFD64440080BE68 /* PrivacyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -532,7 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -546,6 +551,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -588,7 +594,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -697,7 +703,7 @@
 				INFOPLIST_FILE = TooDoWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TooDoWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -731,7 +737,7 @@
 				INFOPLIST_FILE = TooDoWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TooDoWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

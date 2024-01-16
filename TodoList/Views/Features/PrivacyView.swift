@@ -11,7 +11,7 @@ struct PrivacyView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.gray.opacity(0.2).ignoresSafeArea()
+                Color.accentColor.opacity(0.2).ignoresSafeArea()
                 
                 VStack {
                     Spacer()
@@ -33,7 +33,6 @@ struct PrivacyView: View {
                         
                         Text("TooDo doesn't collect or share any analytics with third parties.")
                             .font(.system(size: 23, weight: .medium, design: .rounded))
-                            .foregroundStyle(.gray)
                             .padding(.top, 1)
                             .multilineTextAlignment(.center)
                     }
@@ -42,7 +41,7 @@ struct PrivacyView: View {
                     Spacer()
                     
                     NavigationLink {
-                        SecurityView()
+                        LoginView()
                     } label: {
                         ZStack {
                             Rectangle()

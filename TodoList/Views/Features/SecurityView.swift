@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SecurityView: View {
     @State private var changing = false
-    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1.5, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.gray.opacity(0.2).ignoresSafeArea()
+                Color.accentColor.opacity(0.2).ignoresSafeArea()
                 
                 VStack {
                     Text("Security at a glance")
@@ -24,7 +24,6 @@ struct SecurityView: View {
                     
                     Text("TooDo uses FaceID or TouchID to let you access your tasks")
                         .font(.system(size: 23, weight: .medium, design: .rounded))
-                        .foregroundStyle(.gray)
                         .padding(.trailing, 10)
                         .padding(.top, 1)
                     

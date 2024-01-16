@@ -111,21 +111,21 @@ struct RegisterView: View {
                     
                     ZStack {
                         Rectangle()
-                            .foregroundColor(.clear)
-                            .background(Color.accentColor)
-                            .frame(width: 240, height: 45)
-                            .cornerRadius(16)
+                            .foregroundColor(.accentColor)
+                            .frame(width: 250, height: 50)
+                            .cornerRadius(15)
                         
-                        Button {
-                            viewModel.register()
-                        } label: {
+                        HStack {
                             Text("criar-conta")
                                 .foregroundColor(.white)
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                .font(.system(size: 16, weight: .semibold, design: .rounded))
                         }
                     }
-                    .shadow(color: .accentColor.opacity(0.8), radius: 5)
                     .padding(.top, 15)
+                    .onTapGesture {
+                        viewModel.register()
+                    }
+                    
                 }
                 .ignoresSafeArea(.keyboard)
                 .opacity(isAnimating ? 1 : 0)

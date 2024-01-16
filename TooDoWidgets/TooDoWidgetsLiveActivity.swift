@@ -24,6 +24,7 @@ struct TooDoWidgetsLiveActivity: Widget {
             HStack(spacing: 40) {
                 Text("Tempo-gasto-na-tarefa")
                     .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
                     
                 Text(context.state.startTime, style: .timer)
                     .font(.system(size: 30, weight: .bold, design: .rounded))

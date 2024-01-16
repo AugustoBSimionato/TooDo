@@ -81,30 +81,30 @@ struct LoginView: View {
                         
                         ZStack {
                             Rectangle()
-                                .foregroundColor(.clear)
-                                .background(Color.accentColor)
-                                .frame(width: 240, height: 45)
-                                .cornerRadius(16)
+                                .foregroundColor(.accentColor)
+                                .frame(width: 250, height: 50)
+                                .cornerRadius(15)
                             
-                            Button {
-                                let context = LAContext()
-                                var error: NSError?
-                                
-                                if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                                    context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Para sua segurança") { success, authenticationError in
-                                        if success {
-                                            viewModel.login()
-                                        }
-                                    }
-                                }
-                            } label: {
+                            HStack {
                                 Text("entrar")
                                     .foregroundColor(.white)
-                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                            }
+                            
+                        }
+                        .padding(.top, 40)
+                        .onTapGesture {
+                            let context = LAContext()
+                            var error: NSError?
+                            
+                            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Para sua segurança") { success, authenticationError in
+                                    if success {
+                                        viewModel.login()
+                                    }
+                                }
                             }
                         }
-                        .shadow(color: .accentColor.opacity(0.8), radius: 5)
-                        .padding(.top, 40)
                     }
                     
                     Spacer()

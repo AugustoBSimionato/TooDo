@@ -12,7 +12,7 @@ struct AlwaysSyncedView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.gray.opacity(0.2).ignoresSafeArea()
+                Color.accentColor.opacity(0.2).ignoresSafeArea()
                 
                 VStack {
                     Text("Always synced")
@@ -22,7 +22,6 @@ struct AlwaysSyncedView: View {
                     
                     Text("Every task is synced and avaliable in all logged devices")
                         .font(.system(size: 22, weight: .medium, design: .rounded))
-                        .foregroundStyle(.gray)
                         .padding(.trailing, 10)
                         .padding(.top, 1)
                     
@@ -49,7 +48,7 @@ struct AlwaysSyncedView: View {
                     Spacer()
                     
                     NavigationLink {
-                        PrivacyView()
+                        WidgetsView()
                     } label: {
                         ZStack {
                             Rectangle()

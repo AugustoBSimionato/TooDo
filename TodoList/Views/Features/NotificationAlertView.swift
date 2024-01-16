@@ -13,7 +13,7 @@ struct NotificationAlertView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.gray.opacity(0.2).ignoresSafeArea()
+                Color.accentColor.opacity(0.2).ignoresSafeArea()
                 
                 VStack {
                     Text("Notifications")
@@ -23,7 +23,6 @@ struct NotificationAlertView: View {
                     
                     Text("TooDo remind you if you have completed your tasks")
                         .font(.system(size: 23, weight: .medium, design: .rounded))
-                        .foregroundStyle(.gray)
                         .padding(.trailing, 45)
                         .padding(.top, 1)
                     
@@ -43,7 +42,7 @@ struct NotificationAlertView: View {
                     Spacer()
                     
                     NavigationLink {
-                        LoginView()
+                        PrivacyView()
                     } label: {
                         ZStack {
                             Rectangle()
