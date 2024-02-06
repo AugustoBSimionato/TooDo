@@ -48,23 +48,57 @@ struct TooDoWidgetsEntryView : View {
             case .systemSmall:
                 VStack {
                     Image(systemName: "arrowshape.turn.up.forward.circle.fill")
-                        .foregroundStyle(.white)
-                        .font(.system(size: 35))
-                        .padding(.bottom)
+                        .foregroundStyle(.text)
+                        .font(.system(size: 40))
+                        .bold()
+                        .padding(.bottom, 3)
                     
                     Text("Acessar-tarefas")
                         .multilineTextAlignment(.center)
-                        .foregroundStyle(.white)
-                        .font(.system(size: 17, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.text)
+                        .font(.system(size: 17, weight: .black, design: .rounded))
+                    
+                    Image(.rabisco)
+                        .resizable()
+                        .frame(width: 110, height: 20)
                 }
                 .overlay {
-                    Image("toodo-logo")
+                    Image(.ideia)
                         .resizable()
-                        .frame(width: 24, height: 20)
-                        .offset(x: 50.0, y: -50.0)
+                        .frame(width: 23, height: 35)
+                        .offset(x: 40.0, y: -56.0)
+                        .rotationEffect(.degrees(15))
                 }
             case .systemMedium:
-                Text("Not implemented yet")
+                VStack {
+                    Image(systemName: "arrowshape.turn.up.forward.circle.fill")
+                        .foregroundStyle(.text)
+                        .font(.system(size: 40))
+                        .bold()
+                        .padding(.bottom, 3)
+                    
+                    Text("Acessar-tarefas")
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.text)
+                        .font(.system(size: 17, weight: .black, design: .rounded))
+                    
+                    Image(.rabisco)
+                        .resizable()
+                        .frame(width: 150, height: 20)
+                }
+                .overlay {
+                    Image(.curlyline)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .offset(x: -150.0, y: -80.0)
+                        .rotationEffect(.degrees(-10))
+                    
+                    Image(.curlyline)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .offset(x: 145.0, y: 20.0)
+                        .rotationEffect(.degrees(20))
+                }
             case .systemLarge:
                 Text("Not implemented yet")
             case .accessoryCircular:
@@ -92,21 +126,15 @@ struct TooDoWidgetsEntryView : View {
 
 struct TooDoWidgets: Widget {
     let kind: String = "TooDoWidgets"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                TooDoWidgetsEntryView(entry: entry)
-                    .containerBackground(.accent, for: .widget)
-            } else {
-                TooDoWidgetsEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+            TooDoWidgetsEntryView(entry: entry)
+                .containerBackground(.widgetBackground, for: .widget)
         }
-        .supportedFamilies([.systemSmall, .accessoryCircular, .accessoryInline])
-        .configurationDisplayName("Lista-de-tarefas-do-TooDo")
-        .description("Acesse-sua-lista-de-tarefas-de-forma-rápida-na-home-ou-lock-screen!")
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
+        .configurationDisplayName("widget-title")
+        .description("widget-description")
     }
 }
 
@@ -114,5 +142,10 @@ struct TooDoWidgets: Widget {
     TooDoWidgets()
 } timeline: {
     SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+}
+
+#Preview(as: .systemMedium) {
+    TooDoWidgets()
+} timeline: {
+    SimpleEntry(date: .now, emoji: "😀")
 }

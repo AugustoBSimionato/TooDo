@@ -13,29 +13,32 @@ struct EmptyTasksView: View {
     var body: some View {
         ContentUnavailableView {
             Image(systemName: "checkmark.seal.fill")
-                .foregroundStyle(Color.accentColor)
+                .foregroundStyle(.accent)
                 .symbolEffect(.bounce, value: isEmpty)
                 .font(.system(size: 50))
             
             Text("empty-list")
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
-                .foregroundStyle(Color.accentColor)
+                .font(.system(size: 20, weight: .black, design: .rounded))
+                .foregroundStyle(.firstViewText)
                 .padding(.bottom, 10)
         } description: {
             HStack {
                 Text("description")
-                    .font(.system(size: 18, weight: .regular, design: .rounded))
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .foregroundStyle(.firstViewText)
                     .bold()
                 
-                Image(systemName: "plus.circle.fill")
+                Image(systemName: "plus.circle")
                     .foregroundStyle(Color.accentColor)
+                    .bold()
                     .font(.system(size: 18))
                 
                 Text("description2")
-                    .font(.system(size: 18, weight: .regular, design: .rounded))
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .foregroundStyle(.firstViewText)
                     .bold()
             }
-            .foregroundStyle(.gray)
+            .foregroundStyle(.firstViewText.opacity(0.7))
         }
         .onAppear {
             isEmpty.toggle()
@@ -43,6 +46,11 @@ struct EmptyTasksView: View {
     }
 }
 
-#Preview {
+#Preview("English") {
     EmptyTasksView()
+}
+
+#Preview("Portuguese-BR") {
+    EmptyTasksView()
+        .environment(\.locale, Locale(identifier: "pt-br"))
 }

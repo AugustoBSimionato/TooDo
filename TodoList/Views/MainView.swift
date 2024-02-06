@@ -9,47 +9,44 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
+    @State private var showSplash = true
     
     var body: some View {
-        if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
-            accountView
-        } else {
-            AlwaysSyncedView()
+        ZStack {
+            if showSplash {
+                SplashScreenView()
+                    .transition(.opacity)
+            } else {
+                if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
+                    accountView
+                } else {
+                    FirstView()
+                }
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation {
+                    self.showSplash = false
+                }
+            }
         }
     }
     
     @ViewBuilder
     var accountView: some View {
         TabView {
-            NavigationStack {
-                ToDoListView(userId: viewModel.currentUserId)
-            }
-            .tabItem {
-                Image(systemName: "list.bullet.rectangle.portrait.fill")
-                Text("tarefas")
-            }
+            ToDoListView(userId: viewModel.currentUserId)
+                .tabItem {
+                    Image(systemName: "list.bullet.rectangle.portrait.fill")
+                    Text("tarefas")
+                }
             
-            NavigationStack {
-                TimerView()
-            }
-            .tabItem {
-                Image(systemName: "stopwatch.fill")
-                Text("cronômetro")
-            }
-            
-            NavigationStack {
-                SettingsView()
-            }
-            .tabItem {
-                Image(systemName: "gearshape.fill")
-                Text("configurações")
-            }
+            TimerView()
+                .tabItem {
+                    Image(systemName: "stopwatch.fill")
+                    Text("cronômetro")
+                }
         }
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }

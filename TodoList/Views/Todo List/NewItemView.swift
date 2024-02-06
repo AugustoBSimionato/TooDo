@@ -21,48 +21,56 @@ struct NewItemView: View {
     let notify = NewItemViewViewModel()
     
     var body: some View {
-        VStack {
-            Form {
-                TextField("descreva-a-tarefa...", text: $viewModel.title)
-                DatePicker("", selection: $viewModel.dueDate, in: Date()...)
-                    .datePickerStyle(.graphical)
-                    .popoverTip(reminderDateTip())
-            }
-            .shadow(radius: 5)
-            .scrollDisabled(true)
-            .scrollContentBackground(.hidden)
+        ZStack {
+            Color.accent.opacity(0.1).ignoresSafeArea()
             
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .background(Color.accentColor)
-                    .frame(width: 250, height: 50)
-                    .cornerRadius(16)
-                
-                Button {
-                    if viewModel.canSave {
-                        viewModel.save()
-                        notify.sendScheduleNotification(date: viewModel.dueDate, title: "já-finalizou-essa-tarefa?-🤔", body: viewModel.title)
-                        newItemPresented = false
-                        
-                        let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                        impactMed.impactOccurred()
-                    } else {
-                        viewModel.showAlert = true
+            NavigationStack {
+                VStack {
+                    Form {
+                        TextField("descreva-a-tarefa...", text: $viewModel.title)
+                        DatePicker("", selection: $viewModel.dueDate, in: Date()...)
+                            .datePickerStyle(.graphical)
+                            .popoverTip(reminderDateTip())
                     }
-                } label: {
-                    Text("adicionar")
-                        .foregroundColor(.white)
-                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .shadow(radius: 5)
+                    .scrollDisabled(true)
+                    .scrollContentBackground(.hidden)
+                    
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .background(Color.accentColor)
+                            .frame(width: 250, height: 50)
+                            .cornerRadius(16)
+                        
+                        Button {
+                            if viewModel.canSave {
+                                viewModel.save()
+                                notify.sendScheduleNotification(date: viewModel.dueDate, title: "Já finalizou essa tarefa?", body: viewModel.title)
+                                newItemPresented = false
+                                
+                                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                impactMed.impactOccurred()
+                            } else {
+                                viewModel.showAlert = true
+                            }
+                        } label: {
+                            Text("adicionar")
+                                .foregroundColor(.white)
+                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                        }
+                    }
+                    .padding(.bottom, 40)
+                    .alert(isPresented: $viewModel.showAlert) {
+                        Alert(title: Text("estranho...🤨"), message: Text("acho-que-você-esqueceu-de-descrever-a-tarefa,da-uma-olhada!"))
+                    }
                 }
-            }
-            .padding(.bottom, 40)
-            .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text("estranho...🤨"), message: Text("acho-que-você-esqueceu-de-descrever-a-tarefa,da-uma-olhada!"))
+                .padding(.top, 30)
+                .ignoresSafeArea(.keyboard)
+                .navigationTitle("nova-tarefa")
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
-        .padding(.top, 30)
-        .ignoresSafeArea(.keyboard)
     }
 }
 

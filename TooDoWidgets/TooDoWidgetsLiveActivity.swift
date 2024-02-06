@@ -20,17 +20,16 @@ struct TooDoWidgetsAttributes: ActivityAttributes {
 struct TooDoWidgetsLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: TooDoWidgetsAttributes.self) { context in
-            // Lock screen/banner UI goes here
             HStack(spacing: 40) {
                 Text("Tempo-gasto-na-tarefa")
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
-                    
+                
                 Text(context.state.startTime, style: .timer)
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                    .font(.system(size: 35, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
             }
-            .activityBackgroundTint(.accentColor)
+            .activityBackgroundTint(Color.white.opacity(0.1))
             .padding(30)
 
         } dynamicIsland: { context in
@@ -39,21 +38,21 @@ struct TooDoWidgetsLiveActivity: Widget {
                     HStack {
                         Text("Tempo-gasto-na-tarefa")
                             .font(.system(size: 16, weight: .bold, design: .rounded))
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.accent)
                     }
                     .frame(width: 120)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     ZStack(alignment: .center) {
                         Capsule()
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.accent)
                             .opacity(0.2)
                             .frame(width: 100, alignment: .center)
                         
                         VStack {
                             Text(context.state.startTime, style: .timer)
                                 .font(.system(size: 25, weight: .semibold, design: .rounded))
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(.accent)
                                 .frame(width: 60)
                         }
                     }
@@ -62,18 +61,18 @@ struct TooDoWidgetsLiveActivity: Widget {
             } compactLeading: {
                 Image(systemName: "stopwatch.fill")
                     .font(.system(size: 17))
-                    .foregroundStyle(Color.accentColor)
+                    .foregroundStyle(.accent)
                     .frame(width: 35)
             } compactTrailing: {
                 Text(context.state.startTime, style: .timer)
                     .bold()
                     .frame(width: 35)
-                    .foregroundColor(.accentColor)
+                    .foregroundStyle(.accent)
             } minimal: {
                 Image(systemName: "stopwatch.fill")
                     .font(.system(size: 15))
                     .frame(width: 25)
-                    .foregroundColor(.accentColor)
+                    .foregroundStyle(.accent)
             }
         }
     }

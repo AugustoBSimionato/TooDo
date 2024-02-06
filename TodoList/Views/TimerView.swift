@@ -24,11 +24,28 @@ struct TimerView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Spacer()
+            ZStack {
+                Color.accent.opacity(0.1).ignoresSafeArea()
                 
-                if isTrackingTime {
-                    if let startTime {
+                VStack {
+                    Spacer()
+                    
+                    if isTrackingTime {
+                        if let startTime {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 200, height: 100)
+                                    .foregroundColor(.accentColor)
+                                    .opacity(0.2)
+                                
+                                VStack {
+                                    Text(startTime, style: .timer)
+                                        .foregroundColor(.accentColor)
+                                        .font(.system(size: 50, weight: .semibold, design: .rounded))
+                                }
+                            }
+                        }
+                    } else {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
                                 .frame(width: 200, height: 100)
@@ -36,71 +53,59 @@ struct TimerView: View {
                                 .opacity(0.2)
                             
                             VStack {
-                                Text(startTime, style: .timer)
+                                Text("0:00")
                                     .foregroundColor(.accentColor)
                                     .font(.system(size: 50, weight: .semibold, design: .rounded))
                             }
                         }
                     }
-                } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 200, height: 100)
-                            .foregroundColor(.accentColor)
-                            .opacity(0.2)
-                        
-                        VStack {
-                            Text("0:00")
-                                .foregroundColor(.accentColor)
-                                .font(.system(size: 50, weight: .semibold, design: .rounded))
+                    
+                    Spacer()
+                        .frame(height: 100)
+                    
+                    Button {
+                        isTrackingTime.toggle()
+                        if isTrackingTime {
+                            startTime = .now
+                            
+                            let attributes = TooDoWidgetsAttributes()
+                            let state = TooDoWidgetsAttributes.ContentState(startTime: .now)
+                            
+                            activity = try? Activity<TooDoWidgetsAttributes>.request(attributes: attributes, contentState: state, pushType: nil)
+                            
+                            let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                            impactMed.impactOccurred()
+                        } else {
+                            guard let startTime else { return }
+                            let state = TooDoWidgetsAttributes.ContentState(startTime: startTime)
+                            
+                            Task {
+                                await activity?.end(using: state, dismissalPolicy: .immediate)
+                            }
+                            
+                            self.startTime = nil
+                            
+                            let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                            impactMed.impactOccurred()
+                        }
+                    } label: {
+                        ZStack {
+                            Capsule(style: .continuous)
+                                .frame(width: 220, height: 50)
+                                .foregroundStyle(.firstViewText)
+                            Text(isTrackingTime ? "zerar" : "começar")
+                                .foregroundStyle(.firstViewForegroundButton)
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
                         }
                     }
+                    .popoverTip(timerTip())
+                    
+                    Spacer()
                 }
-                
-                Spacer()
-                
-                Button {
-                    isTrackingTime.toggle()
-                    if isTrackingTime {
-                        startTime = .now
-                        
-                        let attributes = TooDoWidgetsAttributes()
-                        let state = TooDoWidgetsAttributes.ContentState(startTime: .now)
-                        
-                        activity = try? Activity<TooDoWidgetsAttributes>.request(attributes: attributes, contentState: state, pushType: nil)
-                        
-                        let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                        impactMed.impactOccurred()
-                    } else {
-                        guard let startTime else { return }
-                        let state = TooDoWidgetsAttributes.ContentState(startTime: startTime)
-                        
-                        Task {
-                            await activity?.end(using: state, dismissalPolicy: .immediate)
-                        }
-                        
-                        self.startTime = nil
-                        
-                        let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                        impactMed.impactOccurred()
-                    }
-                } label: {
-                    ZStack(alignment: .center) {
-                        RoundedRectangle(cornerRadius: 10.0)
-                            .foregroundColor(.accentColor)
-                            .frame(width: 180, height: 50)
-                        
-                        Text(isTrackingTime ? "zerar" : "começar")
-                            .font(.system(size: 18, weight: .semibold, design: .rounded))
-                            .foregroundColor(.white)
-                    }
-                }
-                .popoverTip(timerTip())
-                
-                Spacer()
+                .padding()
+                .navigationTitle("cronômetro")
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .navigationTitle("cronômetro")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

@@ -18,17 +18,18 @@ struct RegisterView: View {
                 Color.accentColor.opacity(0.1).ignoresSafeArea()
                 
                 VStack {
-                    VStack(alignment: .leading) {
-                        Text("que-bom-te-ver-aqui-🤩")
-                            .font(.system(size: 27, weight: .bold, design: .rounded))
-                            .foregroundColor(.accentColor)
-                            .padding(.bottom, 1)
-                        
-                        Text("crie-sua-conta!")
-                            .font(.system(size: 17, weight: .semibold,design: .rounded))
-                    }
-                    .padding(.bottom, 50)
+                    Spacer()
                     
+                    Text("que-bom-te-ver-aqui")
+                        .font(.system(size: 30, weight: .black, design: .rounded))
+                        .foregroundColor(.firstViewText)
+                        .padding(.bottom, 1)
+                    
+                    Text("crie-sua-conta!")
+                        .foregroundColor(.firstViewText)
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                    
+                    Spacer()
                     
                     ZStack {
                         Rectangle()
@@ -40,7 +41,7 @@ struct RegisterView: View {
                         
                         HStack {
                             Image(systemName: "person.fill")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(.firstViewText)
                             TextField("nome", text: $viewModel.name)
                                 .textContentType(.username)
                                 .accessibility(identifier: "campo nome")
@@ -48,7 +49,7 @@ struct RegisterView: View {
                         .frame(width: 290, height: 50)
                         .padding(.leading, 25)
                     }
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 7)
                     
                     ZStack {
                         Rectangle()
@@ -60,7 +61,7 @@ struct RegisterView: View {
                         
                         HStack {
                             Image(systemName: "envelope.fill")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(.firstViewText)
                             TextField("Email", text: $viewModel.email)
                                 .textInputAutocapitalization(.never)
                                 .accessibility(identifier: "campo email")
@@ -69,7 +70,7 @@ struct RegisterView: View {
                         .frame(width: 290, height: 50)
                         .padding(.leading, 25)
                     }
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 7)
                     
                     ZStack {
                         Rectangle()
@@ -81,7 +82,7 @@ struct RegisterView: View {
                         
                         HStack {
                             Image(systemName: "lock.fill")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(.firstViewText)
                             SecureField("senha", text: $viewModel.password)
                                 .textContentType(.password)
                                 .accessibility(identifier: "campo senha")
@@ -89,43 +90,44 @@ struct RegisterView: View {
                         .frame(width: 290, height: 50)
                         .padding(.leading, 25)
                     }
-                    .padding(.bottom, 30)
+                    
+                    
                     
                     if !viewModel.errorMessage.isEmpty {
                         Text(viewModel.errorMessage)
-                            .foregroundColor(Color.accentColor)
+                            .foregroundColor(.firstViewText)
                             .bold()
                             .padding(.top)
-                            .padding(.bottom)
                     }
                     
-                    NavigationLink {
-                        TermsView()
-                    } label: {
+                    Spacer()
+                        .frame(height: 25)
+                    
+                    Link(destination: URL(string: "https://augustobsimionato.github.io/toodo-terms/")!) {
                         Text("ao-criar-uma-conta-você-concorda-com-os-**Termos-e-Condições-de-Uso**")
                             .multilineTextAlignment(.center)
                             .frame(width: 240)
                             .font(.callout)
+                            .foregroundColor(.firstViewText)
                     }
-                    .padding(.bottom)
                     
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(.accentColor)
-                            .frame(width: 250, height: 50)
-                            .cornerRadius(15)
-                        
-                        HStack {
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    Button {
+                        viewModel.register()
+                    } label: {
+                        ZStack {
+                            Capsule()
+                                .frame(width: 250, height: 50)
+                                .foregroundStyle(.firstViewText)
                             Text("criar-conta")
-                                .foregroundColor(.white)
-                                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                                .foregroundStyle(.firstViewForegroundButton)
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
                         }
                     }
-                    .padding(.top, 15)
-                    .onTapGesture {
-                        viewModel.register()
-                    }
                     
+                    Spacer()
                 }
                 .ignoresSafeArea(.keyboard)
                 .opacity(isAnimating ? 1 : 0)
@@ -139,7 +141,7 @@ struct RegisterView: View {
                         HStack {
                             Image(systemName: "chevron.backward.circle.fill")
                                 .font(.system(size: 20))
-                                .foregroundColor(Color.accentColor)
+                                .foregroundColor(.firstViewText)
                                 .bold()
                         }
                         .opacity(isAnimating ? 1 : 0)

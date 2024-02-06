@@ -13,6 +13,7 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewViewModel()
     @State private var unlocked = false
     @State private var isAnimating = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationStack {
@@ -21,110 +22,96 @@ struct LoginView: View {
                 
                 VStack {
                     Spacer()
+                    
                     VStack {
-                        VStack(alignment: .leading) {
-                            Text("olá!👋")
-                                .font(.system(size: 35, weight: .bold, design: .rounded))
-                                .foregroundColor(.accentColor)
-                                .padding(.bottom, 1)
-                            
-                            Text("faça-login-para-continuar!")
-                                .font(.system(size: 17, weight: .semibold,design: .rounded))
-                        }
-                        .padding(.bottom, 80)
-                        .padding(.trailing, 80)
+                        Text("olá!")
+                            .font(.system(size: 35, weight: .black, design: .rounded))
+                            .foregroundColor(.firstViewText)
+                            .padding(.bottom, 1)
                         
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(.clear)
-                                .background(Color("BackgroundFields"))
-                                .frame(width: 290, height: 50)
-                                .cornerRadius(12)
-                                .shadow(color: .black.opacity(0.2), radius: 4)
-                            
-                            HStack {
-                                Image(systemName: "envelope.fill")
-                                    .foregroundColor(.accentColor)
-                                TextField("Email", text: $viewModel.email)
-                                    .textInputAutocapitalization(.never)
-                                    .keyboardType(.emailAddress)
-                            }
+                        Text("faça-login-para-continuar!")
+                            .foregroundColor(.firstViewText)
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                    }
+                    
+                    Spacer()
+                        .frame(height: 60)
+                    
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .background(Color("BackgroundFields"))
                             .frame(width: 290, height: 50)
-                            .padding(.leading, 25)
-                        }
-                        .padding(.bottom, 15)
+                            .cornerRadius(12)
+                            .shadow(color: .black.opacity(0.2), radius: 4)
                         
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(.clear)
-                                .background(Color("BackgroundFields"))
-                                .frame(width: 290, height: 50)
-                                .cornerRadius(12)
-                                .shadow(color: .black.opacity(0.2), radius: 4)
-                            
-                            HStack {
-                                Image(systemName: "lock.fill")
-                                    .foregroundColor(.accentColor)
-                                SecureField("senha", text: $viewModel.password)
-                                    .textContentType(.password)
-                            }
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                                .foregroundColor(.firstViewText)
+                            TextField("Email", text: $viewModel.email)
+                                .textInputAutocapitalization(.never)
+                                .keyboardType(.emailAddress)
+                        }
+                        .frame(width: 290, height: 50)
+                        .padding(.leading, 25)
+                    }
+                    .padding(.bottom, 10)
+                    
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .background(Color("BackgroundFields"))
                             .frame(width: 290, height: 50)
-                            .padding(.leading, 25)
-                        }
+                            .cornerRadius(12)
+                            .shadow(color: .black.opacity(0.2), radius: 4)
                         
-                        if !viewModel.errorMessage.isEmpty {
-                            Text(viewModel.errorMessage)
-                                .foregroundColor(Color.accentColor)
-                                .bold()
-                                .padding(.top)
+                        HStack {
+                            Image(systemName: "lock.fill")
+                                .foregroundColor(.firstViewText)
+                            SecureField("senha", text: $viewModel.password)
+                                .textContentType(.password)
                         }
+                        .frame(width: 290, height: 50)
+                        .padding(.leading, 25)
+                    }
+                    
+                    if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage)
+                            .foregroundStyle(.firstViewText)
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .padding(.top)
+                    }
+                    
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    Button {
+                        let context = LAContext()
+                        var error: NSError?
                         
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(.accentColor)
-                                .frame(width: 250, height: 50)
-                                .cornerRadius(15)
-                            
-                            HStack {
-                                Text("entrar")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 16, weight: .semibold, design: .rounded))
-                            }
-                            
-                        }
-                        .padding(.top, 40)
-                        .onTapGesture {
-                            let context = LAContext()
-                            var error: NSError?
-                            
-                            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Para sua segurança") { success, authenticationError in
-                                    if success {
-                                        viewModel.login()
-                                    }
+                        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "for-secure") { success, authenticationError in
+                                if success {
+                                    viewModel.login()
                                 }
                             }
+                        }
+                    } label: {
+                        ZStack {
+                            Capsule()
+                                .frame(width: 250, height: 50)
+                                .foregroundStyle(.firstViewText)
+                            Text("entrar")
+                                .foregroundStyle(.firstViewForegroundButton)
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
                         }
                     }
                     
                     Spacer()
-                    
-                    VStack {
-                        Text("primeira-vez-aqui?")
-                            .font(.system(size: 18, weight: .semibold, design: .rounded))
-                            .padding(.bottom, 2)
-                        NavigationLink {
-                            RegisterView()
-                        } label: {
-                            Text("crie-uma-conta")
-                                .font(.system(size: 16, weight: .bold, design: .rounded))
-                                .foregroundColor(Color.accentColor)
-                        }
-                    }
-                    .padding(.bottom)
                 }
                 .ignoresSafeArea(.keyboard)
                 .opacity(isAnimating ? 1 : 0)
+                .padding()
             }
             .onAppear(perform: {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
@@ -142,6 +129,21 @@ struct LoginView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.backward.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(Color.firstViewText)
+                            .bold()
+                    }
+                    .opacity(isAnimating ? 1 : 0)
+                }
+            }
+        }
     }
 }
 

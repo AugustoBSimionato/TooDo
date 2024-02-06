@@ -28,15 +28,15 @@ class LoginViewViewModel: ObservableObject {
                 switch nsError.code {
                 case AuthErrorCode.wrongPassword.rawValue:
                     DispatchQueue.main.async {
-                        self.errorMessage = "wrong password"
+                        self.errorMessage = "Senha errada"
                     }
                 default:
                     DispatchQueue.main.async {
-                        self.errorMessage = "error login"
+                        self.errorMessage = "Erro no login, tente de novo"
                     }
                 }
             } else {
-                // Usuário logado com sucesso
+                
             }
         }
     }
@@ -48,14 +48,14 @@ class LoginViewViewModel: ObservableObject {
         
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty, !password.trimmingCharacters(in: .whitespaces).isEmpty else {
             DispatchQueue.main.async {
-                self.errorMessage = "empty fields"
+                self.errorMessage = "Campos vazios"
             }
             return false
         }
         
         guard email.contains("@") && email.contains(".") else {
             DispatchQueue.main.async {
-                self.errorMessage = "@ or . is missing"
+                self.errorMessage = "@ ou .com(.br) estão faltando no email"
             }
             return false
         }

@@ -18,6 +18,7 @@ struct addTaskTip: Tip {
 struct ToDoListView: View {
     @StateObject var viewModel: ToDoListViewViewModel
     @StateObject var viewModelProfile = ProfileViewViewModel()
+    @State private var isShowingSettings = false
     @FirestoreQuery var items: [ToDoListItem]
     
     @State private var searchTask = ""
@@ -39,89 +40,97 @@ struct ToDoListView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                if items.isEmpty {
-                    EmptyTasksView()
-                } else {
-                    List(filteredTasks) { item in
-                        ToDoListItemView(item: item)
-                            .swipeActions {
-                                Button {
-                                    viewModel.delete(id: item.id)
-                                } label: {
-                                    Image(systemName: "trash.fill")
-                                }
-                                .tint(.red)
-                                .onTapGesture {
-                                    let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                                    impactMed.impactOccurred()
-                                }
-                            }
-                            .contextMenu {
-                                Button(role: .destructive) {
-                                    viewModel.delete(id: item.id)
-                                } label: {
-                                    HStack {
-                                        Text("apagar-tarefa")
+            ZStack {
+                Color.accent.opacity(0.1).ignoresSafeArea()
+                VStack {
+                    if items.isEmpty {
+                        EmptyTasksView()
+                    } else {
+                        List(filteredTasks) { item in
+                            ToDoListItemView(item: item)
+                                .swipeActions {
+                                    Button {
+                                        viewModel.delete(id: item.id)
+                                    } label: {
                                         Image(systemName: "trash.fill")
                                     }
+                                    .tint(.red)
+                                    .onTapGesture {
+                                        let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                        impactMed.impactOccurred()
+                                    }
                                 }
-                                .onLongPressGesture {
-                                    let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                                    impactMed.impactOccurred()
+                                .contextMenu {
+                                    Button(role: .destructive) {
+                                        viewModel.delete(id: item.id)
+                                    } label: {
+                                        HStack {
+                                            Text("apagar-tarefa")
+                                            Image(systemName: "trash.fill")
+                                        }
+                                    }
+                                    .onLongPressGesture {
+                                        let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                                        impactMed.impactOccurred()
+                                    }
                                 }
+                        }
+                        .listStyle(.sidebar)
+                        .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "buscar-tarefas")
+                        .overlay {
+                            if filteredTasks.isEmpty {
+                                ContentUnavailableView.search
                             }
-                    }
-                    .refreshable {
-                        
-                    }
-                    .listStyle(.sidebar)
-                    .searchable(text: $searchTask, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "buscar-tarefas")
-                    .overlay {
-                        if filteredTasks.isEmpty {
-                            ContentUnavailableView.search
                         }
                     }
                 }
-            }
-            .ignoresSafeArea(.keyboard)
-            .navigationTitle("tarefas")
-            .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $viewModel.showingNewItemView) {
-                NavigationStack {
-                    NewItemView(newItemPresented: $viewModel.showingNewItemView)
-                        .toolbar {
-                            ToolbarItem(placement: .cancellationAction) {
-                                Button {
-                                    viewModel.showingNewItemView = false
-                                } label: {
-                                    Text("voltar")
-                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                .ignoresSafeArea(.keyboard)
+                .navigationTitle("tarefas")
+                .navigationBarTitleDisplayMode(.inline)
+                .sheet(isPresented: $viewModel.showingNewItemView) {
+                    NavigationStack {
+                        NewItemView(newItemPresented: $viewModel.showingNewItemView)
+                            .toolbar {
+                                ToolbarItem(placement: .cancellationAction) {
+                                    Button {
+                                        viewModel.showingNewItemView = false
+                                    } label: {
+                                        Text("voltar")
+                                            .font(.system(size: 17, weight: .semibold, design: .rounded))
+                                    }
                                 }
-
                             }
-                            
-                            ToolbarItem(placement: .principal) {
-                                Text("nova-tarefa")
-                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
-                            }
-                        }
+                    }
                 }
-            }
-            .toolbar {
-                ToolbarItem {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.system(size: 20))
+                .sheet(isPresented: $isShowingSettings) {
+                    SettingsView()
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            isShowingSettings = true
+                            let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                            impactMed.impactOccurred()
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .font(.system(size: 17))
+                                .foregroundStyle(.firstViewText)
+                                .bold()
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 18))
+                            .foregroundStyle(.firstViewText)
+                            .bold()
                             .onTapGesture {
                                 let impactMed = UIImpactFeedbackGenerator(style: .soft)
                                 impactMed.impactOccurred()
                                 viewModel.showingNewItemView = true
                             }
+                            .popoverTip(addTaskTip())
                     }
-                    .popoverTip(addTaskTip())
                 }
             }
         }
