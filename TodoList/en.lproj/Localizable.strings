@@ -54,3 +54,5 @@
 "welcome!" = "Welcome!";
 "organize-life" = "Let's organize your life?";
 "already-finished" = "Did you finish this task?";
+"widget-title" = "Your tasks";
+"widget-description" = "Easily access your tasks directly from the home or lock screen";

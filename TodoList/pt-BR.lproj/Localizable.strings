@@ -54,3 +54,5 @@
 "welcome!" = "Bem-vindo!";
 "organize-life" = "Bora organizar a vida?";
 "already-finished" = "Já finalizou essa tarefa?";
+"widget-title" = "Suas tarefas";
+"widget-description" = "Acesse facilmente suas tarefas diretamente da tela inicial ou bloqueada";

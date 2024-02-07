@@ -56,7 +56,7 @@ struct TooDoWidgetsEntryView : View {
                     Text("Acessar-tarefas")
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.text)
-                        .font(.system(size: 17, weight: .black, design: .rounded))
+                        .font(.system(size: 15, weight: .black, design: .rounded))
                     
                     Image(.rabisco)
                         .resizable()
