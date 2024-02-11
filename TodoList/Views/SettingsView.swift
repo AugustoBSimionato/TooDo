@@ -35,7 +35,7 @@ struct SettingsView: View {
                                         .foregroundStyle(.white)
                                 }
                                 Text("perfil")
-                                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                                    .font(.system(size: 15, weight: .semibold, design: .rounded))
                             }
                         }
                         Link(destination: URL(string: "https://augustobsimionato.github.io/toodo-terms/")!) {
@@ -50,7 +50,8 @@ struct SettingsView: View {
                                         .foregroundStyle(.white)
                                 }
                                 Text("Termos-e-Condições-de-Uso")
-                                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                                    .foregroundStyle(.settingsForegroundcolor)
                             }
                         }
                         
@@ -68,7 +69,7 @@ struct SettingsView: View {
                                         .foregroundStyle(.white)
                                 }
                                 Text("sair")
-                                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                                    .font(.system(size: 15, weight: .semibold, design: .rounded))
                                     .foregroundStyle(.red)
                             }
                         }
@@ -87,9 +88,10 @@ struct SettingsView: View {
                                     .font(.system(size: 14))
                                     .foregroundStyle(.white)
                             }
-                            ShareLink(item: URL(string: "https://toodo-suas-tarefas-concluidas-de-forma.webflow.io/")!, message: Text("Suas-tarefas-concluídas-de-forma-rápida-e-fácil!-Baixe-já!")) {
+                            ShareLink(item: URL(string: "https://augustobsimionato.github.io/toodo-website")!, message: Text("Suas-tarefas-concluídas-de-forma-rápida-e-fácil!-Baixe-já!")) {
                                 Text("Compartilhar-o-TooDo")
-                                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                                    .foregroundStyle(.settingsForegroundcolor)
                             }
                         }
                         
@@ -107,7 +109,8 @@ struct SettingsView: View {
                                 email.send(openURL: openURL)
                             } label: {
                                 Text("Enviar-Feedback")
-                                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                                    .foregroundStyle(.settingsForegroundcolor)
                             }
                         }
                         
@@ -115,14 +118,14 @@ struct SettingsView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 5.0)
                                     .frame(width: 25, height: 25)
-                                    .foregroundStyle(.yellow)
+                                    .foregroundStyle(.accent)
                                 
                                 Image(systemName: "star.fill")
                                     .font(.system(size: 14))
                                     .foregroundStyle(.white)
                             }
                             Text("Avalie-o-TooDo")
-                                .font(.system(size: 15, weight: .medium, design: .rounded))
+                                .font(.system(size: 15, weight: .semibold, design: .rounded))
                             Spacer()
                             Text("coming-soon")
                                 .font(.system(size: 15, weight: .bold, design: .rounded))
@@ -147,7 +150,7 @@ struct SettingsView: View {
                                     .foregroundStyle(.white)
                             }
                             Text("Versão-do-App")
-                                .font(.system(size: 15, weight: .medium, design: .rounded))
+                                .font(.system(size: 15, weight: .semibold, design: .rounded))
                             Spacer()
                             Text("1.0")
                                 .font(.system(size: 15, weight: .regular, design: .rounded))
@@ -164,7 +167,7 @@ struct SettingsView: View {
                                     .symbolEffect(.pulse, options: .repeating, value: connectionStatus)
                             }
                             Text(connectionStatus == .satisfied ? "Tudo-sincronizado-🤩" : "Sem-internet-para-sincronizar")
-                                .font(.system(size: 15, weight: .medium, design: .rounded))
+                                .font(.system(size: 15, weight: .semibold, design: .rounded))
                         }
                         .onAppear {
                             let monitor = NWPathMonitor()
